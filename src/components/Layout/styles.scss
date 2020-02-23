@@ -1,0 +1,10 @@
+@import '../shared/variables.scss';
+.layout-left-content { 
+    height: 100vh; 
+    width: 300px;
+   background-color: $light-blue-bg;
+}  
+
+.layout-main-content {
+    background-color: $white-bg;
+}

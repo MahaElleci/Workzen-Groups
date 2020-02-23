@@ -1,12 +1,21 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import Layout from "./components/Layout/layout";
+import {data} from "./data/data";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-    
-    </div>
-  );
+class App extends Component {
+  state = {
+    staticdata: {}
+  };
+
+  componentDidMount() {
+  }
+  render() { 
+    return (
+      <div>
+        <Layout data={data}/>
+      </div>
+    );
+  }
 }
-
 export default App;

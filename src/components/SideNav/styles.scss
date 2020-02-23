@@ -1,0 +1,44 @@
+@import "../shared/variables.scss";
+.sidenav-wrapper {
+  padding: 2.5rem;
+  &__heading {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: $zen-primary-color;
+    margin-bottom: 2rem;
+  }
+  &__groups {
+    display: flex;
+    flex-direction: column;
+    &__items {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      .groupIcon {
+        background-color: $white-bg;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 2rem;
+        }
+      }
+      .groupName {
+        color: $zen-primary-color;
+        margin-bottom: 0;
+        margin-left: 1rem;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
