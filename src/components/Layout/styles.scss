@@ -1,10 +1,18 @@
-@import '../shared/variables.scss';
-.layout-left-content { 
-    height: 100vh; 
+@import "../shared/variables.scss";
+.layout-wrapper {
+  display: flex; 
+  .layout-header {
+      height: 60px;
+      background-color: $zen-primary-color; 
+      width: 100%;
+      position: absolute;
+  }
+  .layout-left-content {
     width: 300px;
-   background-color: $light-blue-bg;
-}  
+    background-color: $light-blue-bg;
+  }
 
-.layout-main-content {
+  .layout-main-content {
     background-color: $white-bg;
+  }
 }

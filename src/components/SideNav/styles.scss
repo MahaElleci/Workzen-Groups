@@ -1,12 +1,13 @@
 @import "../shared/variables.scss";
 .sidenav-wrapper {
-  padding: 2.5rem;
+  padding: 2.5rem; 
   &__heading {
     text-transform: uppercase;
     font-weight: 500;
     font-size: 1.2rem;
     color: $zen-primary-color;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; 
+    margin-top: 3rem;
   }
   &__groups {
     display: flex;

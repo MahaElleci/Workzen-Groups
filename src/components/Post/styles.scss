@@ -1,0 +1,13 @@
+@import "../shared/variables.scss";
+
+.post-wrapper {
+  background-color: $white-bg;
+  width: 100%;
+  min-height: 300px; 
+  box-shadow: -1px 6px 22px 2px rgba(232,232,232,1); 
+  padding: 1rem; 
+  margin-bottom: 1.5rem;
+  &__content {
+    color: rgb(25, 25, 25);
+  }
+}
