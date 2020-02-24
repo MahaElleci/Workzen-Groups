@@ -22,15 +22,11 @@ export const data = {
     exploreGroups: [
       {
         name: "User Experience",
-        icon: ""
+        icon: "fa fa-lightbulb-o"
       },
       {
         name: "North America",
-        icon: ""
-      },
-      {
-        name: "Communication",
-        icon: ""
+        icon: "fa fa-users"
       }
     ]
   },

@@ -10,7 +10,8 @@
   }
   &__groups {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    margin-bottom: 2rem;
     &__items {
       display: flex;
       align-items: center;

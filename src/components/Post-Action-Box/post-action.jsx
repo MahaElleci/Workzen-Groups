@@ -44,6 +44,12 @@ class CreatePost extends Component {
       this.setState({
         value: ""
       });
+  } 
+  addPlaceholder() { 
+    if(this.state.value === '')
+    this.setState({
+      value: "Share something"
+    });
   }
   render() {
     return (
@@ -52,7 +58,8 @@ class CreatePost extends Component {
           className="createPost__textarea"
           onClick={() => this.clearInput()}
           value={this.state.value}
-          onChange={this.handleChange}
+          onChange={this.handleChange} 
+          onBlur={() => this.addPlaceholder()}
         ></textarea>
         <img className="userImage" src={this.state.userImage} />
         <Button text={"Post"}></Button>
