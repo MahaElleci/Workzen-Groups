@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
 export class CommentBox extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.textInput = React.createRef();
         this.state = {
-            value: "Write a comment"
+            value: "Write a comment",
+            commentBoxFocused: false
         }
     }
     handleChange = (event) => {
@@ -12,13 +14,13 @@ export class CommentBox extends Component {
     }
     handleBlur = (event) => {
         if (!event.target.value) {
-           this.setState({value: "Write a comment"});
+            this.setState({ value: "Write a comment" });
         }
     }
     render() {
         return (
             <div className="post-card__comment-box">
-                <input type="text" placeholder={this.state.value} onBlur={this.handleBlur} onChange={this.handleChange}></input>
+                <input ref={this.textInput} type="text" placeholder={this.state.value} onBlur={this.handleBlur} onChange={this.handleChange}></input>
             </div>
         )
     }

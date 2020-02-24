@@ -7,7 +7,7 @@ const Layout = ({ data }) => {
   return (
     <div className="layout-wrapper"> 
     <div className="layout-header">
-        <img src={require("../../assets/zen-logo.PNG")}/>
+        <img alt="logo" src={require("../../assets/zen-logo.PNG")}/>
     </div>
       <div className="layout-left-content">
         <SideNav data={data.groupsData} />
