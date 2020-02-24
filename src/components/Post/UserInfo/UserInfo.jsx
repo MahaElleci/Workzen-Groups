@@ -1,12 +1,12 @@
 import React from "react";
-
+import './styles.scss';
 const UserInfo = ({ data }) => {
   return (
     <div className="userInfo-wrapper">
-      <img src={data.image} />
+      <img className="userInfo-wrapper__userImage" src={data.image} />
 
-      <div className="userInfo-Text">
-        <p className="username">{data.name}</p>
+      <div className="userInfo-wrapper__text">
+        <a href="#" className="username">{data.name}</a>
         <small class="timeStamp">2 mins ago</small>
       </div>
     </div>

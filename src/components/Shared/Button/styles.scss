@@ -2,11 +2,13 @@
 
 .post-btn{
     background-color: $primary-btn;
-    width: 100%;
+    width: 100%; 
+    max-width: 80px;
     height: 30px;
     color: #fff;
     border-radius: 20px;
-    border: none;
+    border: none; 
+    margin-left: 1rem;
     cursor: pointer;
     &:hover{
         opacity: .9;

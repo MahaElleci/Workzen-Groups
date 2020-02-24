@@ -1,5 +1,6 @@
-@import '../../Shared/variables.scss';
+@import "../../Shared/variables.scss";
 .post-card__comment-box {
+  width: 100%;
   input {
     width: 100%;
     padding-left: 8px;
@@ -7,5 +8,9 @@
     border: 1px solid $gray-border;
     resize: none;
     color: $gray-text;
+    &:focus {
+      outline: none; 
+      border: 1px solid orange;
+    }
   }
 }
