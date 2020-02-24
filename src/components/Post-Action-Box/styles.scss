@@ -1,0 +1,38 @@
+.createPost { 
+    background-color: #fff;
+    padding-top: 3rem; 
+    padding-bottom: 3rem;  
+    box-shadow: -1px 6px 22px 2px #e8e8e8;  
+    margin-bottom: 1rem;
+    position: relative;
+  &__textarea { 
+    width: 100%;
+    resize: none;
+    padding: 1rem; 
+    padding-left: 4.5rem;
+    border: none;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    color: #424242;   
+    min-height: 130px;
+    &:focus {
+        outline: none;
+    }
+ 
+  }  
+  .userImage { 
+      position: absolute; 
+      right: 0;
+      left: 0;
+      margin: 1rem; 
+      margin-top: 0.7rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; 
+      object-fit: cover;
+  }
+  button {
+      float: right; 
+      margin-right: 1rem;
+  }
+}

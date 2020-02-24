@@ -11,7 +11,7 @@ const Post = ({ data }) => {
       <p className="post-wrapper__content">{data.content}</p>
       <div className="post-wrapper__comment-row">
         <CommentBox />
-        <Button />
+        <Button text={"Post"} />
       </div>
     </div>
   );

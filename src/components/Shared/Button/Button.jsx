@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from "react";
 
-export class Button extends Component {
-    render() {
-        return (
-            <button className="post-btn">Post</button>
-        )
-    }
-}
+const Button = ({text,onSubmitHandler}) => {
+  return (
+    <button className="post-btn" type="submit" onSubmit={()=>onSubmitHandler()}>
+     {text}
+    </button>
+  );
+};
 
 export default Button;

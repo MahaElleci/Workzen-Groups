@@ -1,4 +1,9 @@
 export const data = {
+  loggedInUser : {
+    id: 655,
+    name: "Steve Harris", 
+    image: "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
+  },
   groupsData: {
     userGroups: [
       {

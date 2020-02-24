@@ -4,24 +4,27 @@
     display: none;
   }
 }
+.layout-header {
+  height: 60px;
+  background-color: $zen-primary-color;
+  width: 100%;
+  img {
+    padding: 0.5rem;
+    margin-left: 1.5rem;
+  }
+}
 .layout-wrapper {
   display: flex;
-  .layout-header {
-    height: 60px;
-    background-color: $zen-primary-color;
-    width: 100%;
-    position: absolute;
-    img {
-      padding: 0.5rem;
-      margin-left: 1.5rem;
-    }
-  }
+
   .layout-left-content {
     width: 300px;
     background-color: $light-blue-bg;
   }
 
-  .layout-main-content {
+  .layout-main-content { 
+    padding-left: 8rem;
+    padding-right: 8rem;
+    margin-top: 3rem;
     background-color: $white-bg;
   }
 }
