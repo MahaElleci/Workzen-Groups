@@ -1,0 +1,11 @@
+@import '../../Shared/variables.scss';
+.post-card__comment-box {
+  input {
+    width: 100%;
+    padding-left: 8px;
+    height: 40px;
+    border: 1px solid $gray-border;
+    resize: none;
+    color: $gray-text;
+  }
+}
