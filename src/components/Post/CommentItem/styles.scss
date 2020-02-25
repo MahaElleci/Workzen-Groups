@@ -1,22 +1,26 @@
 @import "../../Shared/variables.scss";
-.comment {
-  &__user-info {
-    display: flex;
-    width: 100%;
-  }
+.comment { 
+  display: flex;
+ margin-bottom: 1rem;
   &__user-image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 8px;
-    object-fit: cover;
+    object-fit: cover; 
+    margin-top: 0;
+  } 
+  &__text{
+    display: flex;
+    flex-direction: column;
   }
   &__user-text {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    margin-bottom: 0.5rem;
     .username {
       color: $zen-primary-color;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 500;
       margin-bottom: 0;
     }
@@ -25,8 +29,10 @@
       margin-left: 8px;
     }
   }
-  &__content {
-    padding: 0px 0px 20px 66px;
+  &__content { 
     font-size: .9rem;
-  }
+    padding: 0.5rem;
+    background-color: #F3F3F7;
+    border-radius: 5px;
+  } 
 }
