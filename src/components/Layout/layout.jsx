@@ -1,6 +1,7 @@
 import React from "react";
 import SideNav from "../SideNav/sidenav";
-import Feed from "../Feed/feed";
+import Feed from "../Feed/feed"; 
+import SideWidget from '../SideWidgets/SideWidgets';
 import "./styles.scss";
 import { useSelector } from 'react-redux';  
 const Layout = () => { 
@@ -17,7 +18,9 @@ const Layout = () => {
         <div className="layout-main-content">
           <Feed data={data} />
         </div>
-        <div className="layout-right-content"></div>
+        <div className="layout-right-content">
+          <SideWidget header="My Workmates"/>
+        </div>
       </div>
     </div>
   );
