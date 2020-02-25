@@ -11,13 +11,13 @@
     margin-right: 16px;
     background: transparent;
     padding: 0;
-    &:focus{
-        outline: 0;
+    &:focus {
+      outline: 0;
     }
   }
   &__btn-text {
     margin-left: 4px;
-    color: $gray-text; 
+    color: $gray-text;
     font-size: 0.8rem;
   }
 }
