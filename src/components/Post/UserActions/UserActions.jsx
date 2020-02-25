@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Icon from "../../Shared/IcoMoon/IcoMoon";
+import './styles.scss';
 
 export class UserActions extends Component {
   handleLike = () => {};

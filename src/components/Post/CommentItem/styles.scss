@@ -1,0 +1,32 @@
+@import "../../Shared/variables.scss";
+.comment {
+  &__user-info {
+    display: flex;
+    width: 100%;
+  }
+  &__user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 8px;
+    object-fit: cover;
+  }
+  &__user-text {
+    display: flex;
+    align-items: center;
+    .username {
+      color: $zen-primary-color;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    .time-stamp {
+      color: $gray-text;
+      margin-left: 8px;
+    }
+  }
+  &__content {
+    padding: 0px 0px 20px 66px;
+    font-size: .9rem;
+  }
+}

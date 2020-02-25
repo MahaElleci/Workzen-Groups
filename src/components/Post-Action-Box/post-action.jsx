@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../Shared/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
+import './styles.scss';
 
 const CreatePost = () => {
   const dispatch = useDispatch();
