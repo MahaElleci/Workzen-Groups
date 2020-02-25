@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import './styles.scss';
 const SideWidgets = (props) => {
   const data = useSelector(state => state.workmates);
   return (
