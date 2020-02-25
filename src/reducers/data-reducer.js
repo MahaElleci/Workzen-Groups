@@ -10,25 +10,25 @@ const initialState = {
       userGroups: [
         {
           name: "User Experience",
-          icon: "fa fa-lightbulb-o"
+          icon: "lamp"
         },
         {
           name: "North America",
-          icon: "fa fa-users"
+          icon: "group"
         },
         {
           name: "Communication",
-          icon: "fa fa-bullseye"
+          icon: "dart"
         }
       ],
       exploreGroups: [
         {
           name: "User Experience",
-          icon: "fa fa-lightbulb-o"
+          icon: "lamp"
         },
         {
           name: "North America",
-          icon: "fa fa-users"
+          icon: "dart"
         }
       ]
     },
@@ -37,35 +37,41 @@ const initialState = {
     {
       id: 0,
       content:
-        "This approach allows the component that composes the input to have strict control over the state of the input, while still allowing updates to the DOM to provide information about the text that the user has written.",
+        "his classification provides a dichotomy between employment for pay (groups G and D) and employment for profit (groups F, C and E)",
       userInfo: {
         id: 0,
-        name: "Ahmed Hamed",
+        name: "Kevin Wales",
         image:
           "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-      }
+      }, 
+      seenby: 10,
+      commentsCount: 0
     },
     {
       id: 0,
       content:
-        "This approach allows the component that composes the input to have strict control over the state of the input, while still allowing updates to the DOM to provide information about the text that the user has written.",
+        "Meanwhile, the International Classification of Status at Work (ICSaW-18) provides an organizing framework for statistics classified by status at work. It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work. At its most detailed level, it comprises 20 mutually exclusive categories. The detailed status at work categories may be aggregated, based on the type of authority exercised by the worker, to form eight broad groups, which may be further aggregated to form a dichotomy between independent workers and dependent workers.",
       userInfo: {
         id: 0,
-        name: "Ahmed Hamed",
+        name: "Mathew James",
         image:
-          "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-      }
+          "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg"
+      }, 
+      seenby: 25,
+      commentsCount: 0
     },
     {
       id: 0,
       content:
-        "This approach allows the component that composes the input to have strict control over the state of the input, while still allowing updates to the DOM to provide information about the text that the user has written.",
+        "A person's employment status defines what rights and responsibilities they have at work.",
       userInfo: {
         id: 0,
-        name: "Ahmed Hamed",
+        name: "Amanda Mayers",
         image:
-          "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-      }
+          "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg"
+      }, 
+      seenby: 33,
+      commentsCount: 0
     }
   ]
 };

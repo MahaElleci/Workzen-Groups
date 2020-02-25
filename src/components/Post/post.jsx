@@ -12,14 +12,14 @@ const Post = ({ data }) => {
             <UserInfo data={data.userInfo} />
             <p className="post-wrapper__content">{data.content}</p>
             <div className="post-wrapper__contributions">
-                <ContributionCount />
+                <ContributionCount data={data} />
             </div>
             <div className="post-wrapper__post-actions">
                 <UserActions />
             </div>
             <div className="post-wrapper__comment-row">
                 <CommentBox />
-                <Button />
+                <Button text={"Post"} />
             </div>
         </div>       
     );       

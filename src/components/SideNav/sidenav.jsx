@@ -25,7 +25,7 @@ const SideNav = () => {
           return (
             <div key={i}className="sidenav-wrapper__groups__items">
               <div className="groupIcon">
-              <i className={item.icon} aria-hidden="true"></i>
+              <Icon icon={item.icon} size="28" />
               </div>
               <p className="groupName">{item.name}</p>
             </div>

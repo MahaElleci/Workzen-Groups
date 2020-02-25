@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   &__item{
-      color: $gray-text;
+      color: $gray-text; 
+      font-size: 0.8rem;
   }
 }
