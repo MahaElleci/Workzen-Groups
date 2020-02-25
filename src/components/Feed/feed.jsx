@@ -12,7 +12,7 @@ const Feed = () => {
       <div className="feed-wrapper"> 
       <PostBox data={data} />
         {postsData.map((item,i) => {
-          return <Post key={i} data={item} />;
+          return <Post key={i} data={item} loggedInUser={data.loggedInUser} />;
         })}
       </div>
     </div>

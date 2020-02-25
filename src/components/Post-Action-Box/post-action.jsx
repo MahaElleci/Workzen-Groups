@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import JavascriptTimeAgo from "javascript-time-ago";
+import ReactTimeAgo from "react-time-ago";
 import Button from "../Shared/Button/Button";
 import Spinner from "../Shared/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import './styles.scss';
+import en from "javascript-time-ago/locale/en";
+import "./styles.scss";
 
 const CreatePost = () => {
+  JavascriptTimeAgo.locale(en);
   const dispatch = useDispatch();
   const [postValue, setPostValue] = useState("Share something");
   const [isLoading, setLoading] = useState(false);
@@ -20,15 +24,16 @@ const CreatePost = () => {
     const postObj = {
       id: 847,
       content: postValue,
-      userInfo: loggedInUser, 
+      userInfo: loggedInUser,
       seenby: 0,
-      commentsCount: 0
-    };  
-    setLoading(true)
-    setTimeout(()=>{
-      dispatch({ type: "ADD_POST", newPost: postObj }); 
-      setLoading(false)
-    },3000) 
+      commentsCount: 0,
+      timeCreated: <ReactTimeAgo date={new Date()} />
+    };
+    setLoading(true);
+    setTimeout(() => {
+      dispatch({ type: "ADD_POST", newPost: postObj });
+      setLoading(false);
+    }, 3000);
     setPostValue("Share something");
   }
   function clearInput() {
@@ -50,7 +55,11 @@ const CreatePost = () => {
         <img className="userImage" src={loggedInUser.image} />
         <Button onSubmitHandler={handleSubmit} text={"Post"}></Button>
       </form>
-      {isLoading && <div className="spinner-placeholder"><Spinner /></div>}
+      {isLoading && (
+        <div className="spinner-placeholder">
+          <Spinner />
+        </div>
+      )}
     </React.Fragment>
   );
 };

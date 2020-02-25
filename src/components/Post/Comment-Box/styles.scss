@@ -1,15 +1,20 @@
 @import "../../Shared/variables.scss";
-.post-card__comment-box {
-  width: 100%;
-  input {
+.comment-action{
+  display: flex;
+  align-items: center; 
+  .post-card__comment-box {
     width: 100%;
-    padding-left: 8px;
-    height: 40px;
-    border: 1px solid $gray-border;
-    resize: none;
-    color: $gray-text;
-    &:focus {
-      outline: none; 
+    input {
+      width: 100%;
+      padding-left: 8px;
+      height: 40px;
+      border: 1px solid $gray-border;
+      resize: none;
+      color: $gray-text;
+      &:focus {
+        outline: none; 
+      }
     }
   }
 }
+

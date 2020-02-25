@@ -7,11 +7,10 @@ import UserActions from "./UserActions/UserActions";
 import ContributionCount from "./ContributionCount/ContributionCount";
 import CommentItem from "./CommentItem/CommentItem";
 
-const Post = ({ data }) => {
-  console.log("??", data);
+const Post = ({ data, loggedInUser }) => {
   return (
     <div className="post-wrapper">
-      <UserInfo data={data.userInfo} />
+      <UserInfo data={data.userInfo} timestamp={data.timeCreated} />
       <p className="post-wrapper__content">{data.content}</p>
       <div className="post-wrapper__contributions">
         <ContributionCount data={data} />
@@ -26,8 +25,7 @@ const Post = ({ data }) => {
           })}
       </div>
       <div className="post-wrapper__comment-row">
-        <CommentBox />
-        <Button text={"Post"} />
+        <CommentBox postID={data.id} user={loggedInUser}/>
       </div>
     </div>
   );

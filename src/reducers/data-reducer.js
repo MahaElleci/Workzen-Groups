@@ -31,8 +31,8 @@ const initialState = {
           icon: "dart"
         }
       ]
-    },
-  }, 
+    }
+  },
   postsData: [
     {
       id: 0,
@@ -43,28 +43,31 @@ const initialState = {
         name: "Kevin Wales",
         image:
           "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-      }, 
+      },
+      timeCreated: "3h",
       seenby: 10,
-      commentList:[
+      commentList: [
         {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
+          content:
+            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 0,
             name: "Kevin Wales",
             image:
               "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
           },
-          timeCreated: '10 Oct.'
+          timeCreated: "30m"
         },
         {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
+          content:
+            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 1,
             name: "Andrew Wales",
             image:
               "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
           },
-          timeCreated: '10 Oct.'
+          timeCreated: "1h"
         }
       ]
     },
@@ -78,27 +81,19 @@ const initialState = {
         image:
           "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg"
       }, 
+      timeCreated: "2 days ago",
       seenby: 25,
-      commentList:[
+      commentList: [
         {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
+          content:
+            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 0,
             name: "Kevin Wales",
             image:
               "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
           },
-          timeCreated: '10 Oct.'
-        },
-        {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 1,
-            name: "Andrew Wales",
-            image:
-              "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
-          },
-          timeCreated: '10 Oct.'
+          timeCreated: "1 day ago"
         }
       ]
     },
@@ -111,61 +106,47 @@ const initialState = {
         name: "Kevin Harris",
         image:
           "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
-      }, 
-      seenby: 33,
-      commentList:[
-        {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 0,
-            name: "Kevin Wales",
-            image:
-              "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-          },
-          timeCreated: '10 Oct.'
-        },
-        {
-          content: "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 1,
-            name: "Andrew Wales",
-            image:
-              "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
-          },
-          timeCreated: '10 Oct.'
-        }
-      ]
+      },
+      timeCreated: "1 week ago",
+      commentList: [],
+      seenby: 33
     }
-  ], 
+  ],
   workmates: [
     {
       id: 0,
-      heading: "Kevin Harris", 
-      image: "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg", 
+      heading: "Kevin Harris",
+      image:
+        "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg",
       subtitle: "Senior Project Manager"
-    }, 
+    },
     {
       id: 0,
-      heading: "Mathew James", 
-      image: "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg", 
+      heading: "Mathew James",
+      image:
+        "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg",
       subtitle: "Lead Software Engineer"
-    }, 
+    },
     {
       id: 0,
-      heading: "Kevin Wales", 
-      image: "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg", 
+      heading: "Kevin Wales",
+      image:
+        "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg",
       subtitle: "Principle Software Engineer"
     }
   ]
 };
-
-function rootReducer(state = initialState, action) {  
-  switch (action.type) { 
+function rootReducer(state = initialState, action) {
+  switch (action.type) {
     case "ADD_POST":
-      return { ...state, postsData: [action.newPost, ...state.postsData]}
+      return { ...state, postsData: [action.newPost, ...state.postsData] };
+    case "ADD_COMMENT":
+      var post = state.postsData.find(post => post.id === action.postId);
+      post.commentList.push(action.newComment);
+      return { ...state };
     default:
       return state;
   }
 }
- 
+
 export default rootReducer;
