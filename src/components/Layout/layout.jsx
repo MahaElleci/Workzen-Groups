@@ -2,8 +2,9 @@ import React from "react";
 import SideNav from "../SideNav/sidenav";
 import Feed from "../Feed/feed";
 import "./styles.scss";
-
-const Layout = ({ data }) => {
+import { useSelector } from 'react-redux';  
+const Layout = () => { 
+  const data = useSelector(state => state); 
   return (
     <div>
       <div className="layout-header">

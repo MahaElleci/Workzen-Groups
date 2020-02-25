@@ -7,7 +7,7 @@ const UserInfo = ({ data }) => {
 
       <div className="userInfo-wrapper__text">
         <a href="#" className="username">{data.name}</a>
-        <small class="timeStamp">2 mins ago</small>
+        <small className="timeStamp">2 mins ago</small>
       </div>
     </div>
   );

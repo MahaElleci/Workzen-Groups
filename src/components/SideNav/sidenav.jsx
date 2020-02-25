@@ -1,16 +1,17 @@
 import React from "react";
 import "./styles.scss";
-
-const SideNav = ({ data }) => {
+import {useSelector} from 'react-redux';
+const SideNav = () => { 
+  const data = useSelector(state => state.data);  
   return (
     <div className="sidenav-wrapper">
       <h5 className="sidenav-wrapper__heading">Groups</h5>
       <div className="sidenav-wrapper__groups">
-        {data.userGroups.map(item => {
+        {data.groupsData.userGroups.map((item,i) => {
           return (
-            <div className="sidenav-wrapper__groups__items">
+            <div key={i} className="sidenav-wrapper__groups__items">
               <div className="groupIcon">
-              <i class={item.icon} aria-hidden="true"></i>
+              <i className={item.icon} aria-hidden="true"></i>
               </div>
               <p className="groupName">{item.name}</p>
             </div>
@@ -19,11 +20,11 @@ const SideNav = ({ data }) => {
       </div>  
       <h5 className="sidenav-wrapper__heading">Explore</h5>
       <div className="sidenav-wrapper__explore">
-      {data.exploreGroups.map(item => {
+      {data.groupsData.exploreGroups.map((item,i) => {
           return (
-            <div className="sidenav-wrapper__groups__items">
+            <div key={i}className="sidenav-wrapper__groups__items">
               <div className="groupIcon">
-              <i class={item.icon} aria-hidden="true"></i>
+              <i className={item.icon} aria-hidden="true"></i>
               </div>
               <p className="groupName">{item.name}</p>
             </div>

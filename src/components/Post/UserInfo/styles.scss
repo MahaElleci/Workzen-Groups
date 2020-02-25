@@ -7,14 +7,15 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin: 0.5rem;
+    margin: 0.5rem; 
+    object-fit: cover;
   }
   &__text {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     .username {
       color: $zen-primary-color;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 500;
       margin-bottom: 0; 
     }
