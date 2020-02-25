@@ -1,21 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import Layout from "./components/Layout/layout";
-import {data} from "./data/data";
+
+import { Provider } from "react-redux";
 import "./App.scss";
 
-class App extends Component {
-  state = {
-    staticdata: {}
-  };
-
-  componentDidMount() {
-  }
-  render() { 
-    return (
-      <div>
-        <Layout data={data}/>
-      </div>
-    );
-  }
-}
+const App = ({ store }) => { 
+  return (
+    <div>
+      <Provider store={store}>
+        <Layout />
+      </Provider>
+    </div>
+  );
+};
 export default App;
