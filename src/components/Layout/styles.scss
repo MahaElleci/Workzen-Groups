@@ -22,9 +22,13 @@
   }
 
   .layout-main-content { 
-    // padding-left: 8rem;
-    padding-right: 8rem;
     margin-top: 1.5rem;
-    background-color: $white-bg;
+    background-color: $white-bg; 
+    padding-left: 2rem;
+    padding-right: 2rem;
+  } 
+
+  .layout-right-content {
+    min-width: 315px;
   }
 }

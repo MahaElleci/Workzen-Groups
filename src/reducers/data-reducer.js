@@ -2,9 +2,9 @@ const initialState = {
   data: {
     loggedInUser: {
       id: 655,
-      name: "Steve Harris",
+      name: "Amanda Mayers",
       image:
-        "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
+        "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg"
     },
     groupsData: {
       userGroups: [
@@ -108,9 +108,9 @@ const initialState = {
         "A person's employment status defines what rights and responsibilities they have at work.",
       userInfo: {
         id: 0,
-        name: "Amanda Mayers",
+        name: "Kevin Harris",
         image:
-          "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg"
+          "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
       }, 
       seenby: 33,
       commentList:[
@@ -135,6 +135,26 @@ const initialState = {
           timeCreated: '10 Oct.'
         }
       ]
+    }
+  ], 
+  workmates: [
+    {
+      id: 0,
+      heading: "Kevin Harris", 
+      image: "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg", 
+      subtitle: "Senior Project Manager"
+    }, 
+    {
+      id: 0,
+      heading: "Mathew James", 
+      image: "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg", 
+      subtitle: "Lead Software Engineer"
+    }, 
+    {
+      id: 0,
+      heading: "Kevin Wales", 
+      image: "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg", 
+      subtitle: "Principle Software Engineer"
     }
   ]
 };
