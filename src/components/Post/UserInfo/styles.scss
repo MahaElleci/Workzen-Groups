@@ -16,7 +16,10 @@
       color: $zen-primary-color;
       font-size: 1.2rem;
       font-weight: 500;
-      margin-bottom: 0; 
+      margin-bottom: 0;
+    }
+    .timeStamp {
+      color: $gray-text;
     }
   }
 }

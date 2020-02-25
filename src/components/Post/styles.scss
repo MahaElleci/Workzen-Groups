@@ -3,14 +3,14 @@
 .post-wrapper {
   background-color: $white-bg;
   width: 100%;
-  min-height: 300px;
+//   min-height: 300px;
   box-shadow: -1px 6px 22px 2px rgba(232, 232, 232, 1);
   padding: 1rem;
   margin-bottom: 1rem; 
   border-radius:5px;
   &__content {
     color: rgb(25, 25, 25); 
-    min-height: 200px;
+    // min-height: 200px;
   }
   &__comment-row {
     align-items: center; 

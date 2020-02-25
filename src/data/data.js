@@ -8,25 +8,29 @@ export const data = {
     userGroups: [
       {
         name: "User Experience",
-        icon: "fa fa-lightbulb-o"
+        icon: "lamp"
       },
       {
         name: "North America",
-        icon: "fa fa-users"
+        icon: "group"
       },
       {
         name: "Communication",
-        icon: "fa fa-bullseye"
+        icon: "dart"
       }
     ],
     exploreGroups: [
       {
         name: "User Experience",
-        icon: "fa fa-lightbulb-o"
+        icon: "lamp"
       },
       {
         name: "North America",
-        icon: "fa fa-users"
+        icon: "groups"
+      },
+      {
+        name: "Communication",
+        icon: "dart"
       }
     ]
   },

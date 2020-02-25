@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles.scss";
+import Icon from "../Shared/IcoMoon/IcoMoon";
+
 
 const SideNav = ({ data }) => {
   return (
@@ -10,7 +12,7 @@ const SideNav = ({ data }) => {
           return (
             <div className="sidenav-wrapper__groups__items">
               <div className="groupIcon">
-              <i class={item.icon} aria-hidden="true"></i>
+                <Icon icon={item.icon} size="28" />
               </div>
               <p className="groupName">{item.name}</p>
             </div>

@@ -1,0 +1,7 @@
+.contribution-count {
+  display: flex;
+  justify-content: space-between;
+  &__item{
+      color: $gray-text;
+  }
+}
