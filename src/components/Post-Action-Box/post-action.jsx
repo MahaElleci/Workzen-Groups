@@ -23,12 +23,11 @@ const CreatePost = () => {
   function handleSubmit() {
     const postObj = {
       id: Math.floor(Math.random()),
-      content: postValue,
-      userInfo: loggedInUser,
-      seenby: 0, 
+      text: postValue,
+      owner: loggedInUser,
+      seenList: 0, 
       commentList: [],
-      commentsCount: 0,
-      timeCreated: <ReactTimeAgo date={new Date()} />
+      createDate: <ReactTimeAgo date={new Date()} />
     };
     setLoading(true);
     setTimeout(() => {

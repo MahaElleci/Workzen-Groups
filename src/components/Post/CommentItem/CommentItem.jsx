@@ -12,7 +12,7 @@ function Comments({ data }) {
       <div className="comment__text">
         <div className="comment__user-text">
           <a href="#" className="username">
-            {data.userInfo.name}
+            {data.userInfo.firstName} {data.userInfo.lastName}
           </a>
           <small className="time-stamp">{data.timeCreated}</small>
         </div>

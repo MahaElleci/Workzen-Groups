@@ -5,7 +5,8 @@ const initialState = {
   data: {
     loggedInUser: {
       id: 655,
-      name: "Amanda Mayers",
+      firstName: "Amanda",
+      lastName: "Mayers",
       image:
         "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg"
     },
