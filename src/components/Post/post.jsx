@@ -1,6 +1,5 @@
 import React from "react";
 import UserInfo from "./UserInfo/UserInfo";
-import Button from "../Shared/Button/Button";
 import CommentBox from "../Post/Comment-Box/CommentBox";
 import "./styles.scss";
 import UserActions from "./UserActions/UserActions";
@@ -10,8 +9,8 @@ import CommentItem from "./CommentItem/CommentItem";
 const Post = ({ data, loggedInUser }) => {
   return (
     <div className="post-wrapper">
-      <UserInfo data={data.userInfo} timestamp={data.timeCreated} />
-      <p className="post-wrapper__content">{data.content}</p>
+      <UserInfo data={data.owner} timestamp={data.createDate} />
+      <p className="post-wrapper__content">{data.text}</p>
       <div className="post-wrapper__contributions">
         <ContributionCount data={data} />
       </div>

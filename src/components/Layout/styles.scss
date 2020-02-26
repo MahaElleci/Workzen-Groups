@@ -2,6 +2,9 @@
 @media screen and (max-width: 1035px) {
   .layout-left-content {
     display: none;
+  } 
+  .layout-right-content {
+    display: none;
   }
 }
 .layout-header {
@@ -21,14 +24,16 @@
     background-color: $light-blue-bg;
   }
 
-  .layout-main-content { 
-    margin-top: 1.5rem;
-    background-color: $white-bg; 
-    padding-left: 2rem;
-    padding-right: 2rem;
-  } 
+  .layout-main-content {
+    background-color: $white-bg;
+    padding: 0 2rem;
+    max-width: 850px;
+    margin: 1.5rem auto 0 auto;
+  }
 
-  .layout-right-content {
+  .layout-right-content { 
+    margin-top: 1.5rem;
+    margin-right: 2rem;
     min-width: 315px;
   }
 }

@@ -14,9 +14,11 @@ const Layout = () => {
       <div className="layout-wrapper">
         <div className="layout-left-content">
           <SideNav data={data.groupsData} />
-        </div>
+        </div> 
+        <div className="container">
         <div className="layout-main-content">
           <Feed data={data} />
+        </div> 
         </div>
         <div className="layout-right-content">
           <SideWidget header="My Workmates"/>
