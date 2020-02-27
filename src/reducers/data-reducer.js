@@ -57,7 +57,8 @@ const initialState = {
             "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 0,
-            name: "Kevin Wales",
+            firstName: "Kevin",
+            lastName: "Wales",
             image:
               "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
           },
@@ -68,7 +69,8 @@ const initialState = {
             "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 1,
-            name: "Andrew Wales",
+            firstName: "Andrew",
+            lastName: "Morph",
             image:
               "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
           },
@@ -95,7 +97,8 @@ const initialState = {
             "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
           userInfo: {
             id: 0,
-            name: "Kevin Wales",
+            firstName: "Kevin",
+            lastName: "Wales",
             image:
               "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
           },

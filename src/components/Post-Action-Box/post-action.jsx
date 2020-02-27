@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
+import axios from "axios";
 import JavascriptTimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
 import Button from "../Shared/Button/Button";
@@ -35,7 +36,19 @@ const CreatePost = () => {
       setLoading(false);
     }, 3000);
     setPostValue("Share something");
-  }
+  } 
+
+  // addNewPost(){
+  //   axios.post(
+  //     "https://10.10.32.157/WorkzenGroup/api/Posts/6da577be-af6a-4fe3-82eb-4fd448100428"
+  //   )
+  //     .then(response => { 
+  //     ""
+  //     })
+  //     .catch(e => {
+  //       return e;
+  //     }); 
+  // }
   function clearInput() {
     if (postValue === "Share something") setPostValue("");
   }

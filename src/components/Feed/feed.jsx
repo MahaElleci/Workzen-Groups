@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Post from "../Post/post";
 import PostBox from "../Post-Action-Box/post-action";
@@ -11,7 +11,7 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   function fetchPostsData() {
-    axios(
+    axios.get(
       "https://10.10.32.157/WorkzenGroup/api/Posts/6da577be-af6a-4fe3-82eb-4fd448100428"
     )
       .then(response => { 
@@ -19,8 +19,7 @@ const Feed = () => {
       })
       .catch(e => {
         return e;
-      }); 
-    
+      });  
   }
 
   useEffect(() => {
