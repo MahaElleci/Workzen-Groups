@@ -1,5 +1,10 @@
 @import "../shared/variables.scss";
-.feed-wrapper {
+.feed-wrapper { 
+  margin: 0 auto;
   margin-top: 1rem;
-  min-width: 500px; 
+  min-width: 500px;  
+  margin-bottom: 8rem;  
+  .spinner-placeholder {
+    margin: 0 auto; 
+  }
 }

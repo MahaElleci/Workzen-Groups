@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.scss";
 const UserInfo = ({ data, timestamp }) => { 
-  console.log(data)
   return (
     <div className="userInfo-wrapper">
       <img

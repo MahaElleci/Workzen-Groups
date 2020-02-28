@@ -4,11 +4,12 @@
 const initialState = {
   data: {
     loggedInUser: {
-      id: 655,
+      id: "655",
       firstName: "Amanda",
       lastName: "Mayers",
       image:
-        "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg"
+        "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg", 
+      email : "maha@gmail.com"
     },
     groupsData: {
       userGroups: [
@@ -151,9 +152,9 @@ const initialState = {
 
 function rootReducer(state = initialState, action) { 
   switch (action.type) {
-    case "FETCH_POSTS": return {...state, postsData: [...state.postsData, ...action.posts]}
+    case "FETCH_POSTS": return {...state, postsData: [...state.postsData,...action.posts]}
     case "ADD_POST":
-      return { ...state, postsData: [action.newPost, ...state.postsData] };
+      return { ...state, postsData: [...state.postsData,action.newPost] };
     case "ADD_COMMENT":
       var post = state.postsData.find(post => post.id === action.postId);
       post.commentList.push(action.newComment);
