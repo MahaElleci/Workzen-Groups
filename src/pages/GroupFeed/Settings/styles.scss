@@ -1,0 +1,12 @@
+@import "../../../CommonStyles/variables.scss";
+.groups-settings-form{
+    padding: 30px 48px;
+    width: 100%;
+    &__action-btns{
+        margin-top: 20px;
+    }
+    &__label{
+        font-weight: bold;
+        color: $zen-primary-color;
+    }
+}

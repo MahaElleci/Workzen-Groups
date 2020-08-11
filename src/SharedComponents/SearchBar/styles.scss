@@ -1,0 +1,21 @@
+.groups-search {
+    &__bar {
+        width: 100%;
+        border: 1px solid whitesmoke;
+        padding: 10px;
+    }
+
+    &__results {
+        width: 100%;
+        max-height: 350px;
+        overflow-y: scroll;
+
+        .error-msg {
+            font-size: 16px;
+            padding: 10px;
+            color: darkgray;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

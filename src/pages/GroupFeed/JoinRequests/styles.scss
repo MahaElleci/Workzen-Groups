@@ -1,0 +1,26 @@
+@import "../../../CommonStyles/variables.scss";
+
+.requests-actions {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 5px;
+    max-height: 33px;
+    min-width: 125px;
+  }
+}
+
+.joinRequests-wrapper {
+  margin: 2rem;
+
+  .empty-requests {
+    color: $zen-primary-color;
+    font-size: 1rem;
+  }
+
+  .requests-number {
+    color: $zen-primary-color;
+    font-size: 1rem;
+  }
+}

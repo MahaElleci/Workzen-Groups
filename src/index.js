@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App'; 
-import rootReducer from './reducers/data-reducer';
-import {createStore} from 'redux';
+import React from "react"; 
+import ReactDOM from "react-dom";
+import './CommonStyles/index.scss';
+import App from "./App";
+import rootReducer from "./reducers/data-reducer";
+import {
+  createStore,
+  compose
+} from "redux";
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const enhancers = compose(
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-const root =  document.getElementById('workzen-groups');
-ReactDOM.render(<App store={store} />, root);
+const store = createStore(
+  rootReducer,
+  enhancers
+);
+
+const root = document.getElementById("workzen-groups"); 
 
 
+ReactDOM.render(< App store={
+  store
+} root={root}
+/>, root);

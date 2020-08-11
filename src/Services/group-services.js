@@ -1,0 +1,45 @@
+import dataRequester from "../Requesters/dataRequester";
+
+export const createGroup_service = async function (groupObj) {
+  return await dataRequester({
+    method: "post",
+    url: `/Groups`,
+    data: groupObj,
+  });
+};
+
+export const leaveGroup_service = async function (groupId) {
+  return await dataRequester({
+    method: "put",
+    url: `/groups/LeaveGroup/${groupId}`,
+  });
+};
+
+export const joinPublicGroup_service = async function (groupId) {
+  return await dataRequester({
+    method: "post",
+    url: `/groups/JoinPublicGroup/${groupId}`,
+  });
+};
+
+export const joinPrivateGroup_service = async function (groupId) {
+  return await dataRequester({
+    method: "post",
+    url: `/groups/RequestToJoin/${groupId}`,
+  });
+};
+
+export const cancelRequest_service = function (groupId) {
+  return dataRequester({
+    method: "put",
+    url: `/groups/CancelJoinRequest/${groupId}`,
+  });
+};
+
+export const addMembers_service = function (groupId, memberList) {
+  return dataRequester({
+    method: "put",
+    data: memberList,
+    url: `/groups/AddMemberList/${groupId}`,
+  });
+};

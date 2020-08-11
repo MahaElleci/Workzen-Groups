@@ -1,0 +1,29 @@
+@import "../../../CommonStyles/variables.scss";
+
+.groups-contribution-count {
+  display: flex;
+  justify-content: space-between;
+
+  &__item-wrap {
+    color: $gray-text;
+    font-size: 0.8rem;
+
+    &.pointer {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+
+      .counter {
+        margin-right: 4px;
+      }
+    }
+  }
+}

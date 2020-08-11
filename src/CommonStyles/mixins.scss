@@ -1,0 +1,35 @@
+@mixin for-sm-phone {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
+
+@mixin for-phone-only {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-to-zenbox {
+    @media (min-width: 768px) and (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin for-zenbox-up {
+    @media (min-width: 993px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}

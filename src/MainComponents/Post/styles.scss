@@ -1,0 +1,61 @@
+@import "../../CommonStyles/variables.scss";
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.groups-post-wrapper {
+  position: relative;
+  background-color: $white-bg;
+  width: 100%;
+  box-shadow: 0 0 20px 0 #e8e8e8;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  animation: fadein 1s;
+
+  &__content {
+    color: rgb(25, 25, 25);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  &__load-more {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    .load-more-btn {
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+      color: $zen-primary-color;
+    }
+  }
+}
+
+.groups-edit-placeholder {
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  font-size: 14px;
+  padding: 4px;
+  border-color: $gray-border;
+
+  &:focus {
+    outline: none;
+    // border-color: $primary-btn;
+  }
+} 
+
+.post-actions{
+  position: absolute;
+  top: 0;
+  right: 0;
+ }

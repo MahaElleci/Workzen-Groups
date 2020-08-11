@@ -1,0 +1,36 @@
+@import "../../CommonStyles/variables.scss";
+
+.initials-wrapper {
+  &--large {
+    padding: 0.5rem;
+    width: 50px;
+    height: 45px;
+    border-radius: 10%;
+    background-color: #c5d7e7;
+    display: flex;
+    justify-content: center;
+    p {
+      color: $zen-primary-color;
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+  }
+  &--small {
+    padding: 0.5rem;
+    width: 50px;
+    height: 45px;
+    border-radius: 10%;
+    background-color: #c5d7e7;
+    display: flex;
+    justify-content: center;
+    p {
+      color: $zen-primary-color;
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+  }
+}

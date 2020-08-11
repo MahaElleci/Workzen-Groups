@@ -1,0 +1,47 @@
+@import "../../CommonStyles/variables.scss";
+
+.groups-bar-wrapper {
+  background-color: $gray-border;
+  padding: 16px 52px;
+  display: none;
+  position: relative;
+
+  &__title {
+    margin-right: 4rem;
+
+    .selected {
+      border-bottom: 2px solid $primary-btn;
+      padding-bottom: 1rem;
+    }
+
+    h5 {
+      font-size: 15px;
+      font-weight: bold;
+      color: $zen-primary-color;
+      margin-bottom: 0;
+    }
+
+    a {
+      font-size: 15px;
+      font-weight: bold;
+      color: $zen-primary-color;
+      margin-bottom: 0;
+
+      &:hover {
+        text-decoration: none;
+        color: $zen-primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__actions-items {
+    position: absolute;
+    right: 52px;
+    top: 0;
+    min-width: 265px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

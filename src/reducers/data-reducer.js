@@ -1,164 +1,284 @@
-
-
+import update from "immutability-helper";
 
 const initialState = {
-  data: {
-    loggedInUser: {
-      id: "655",
-      firstName: "Amanda",
-      lastName: "Mayers",
-      image:
-        "https://www.telegraph.co.uk/content/dam/women/2017/03/10/vanessa_trans%2B%2BLoiKUtRP1b2XRX1bmrGgXxe6ykgCMwF95Mjos1GdaiQ.jpg", 
-      email : "maha@gmail.com"
-    },
-    groupsData: {
-      userGroups: [
-        {
-          name: "User Experience",
-          icon: "lamp"
-        },
-        {
-          name: "North America",
-          icon: "group"
-        },
-        {
-          name: "Communication",
-          icon: "dart"
-        }
-      ],
-      exploreGroups: [
-        {
-          name: "User Experience",
-          icon: "lamp"
-        },
-        {
-          name: "North America",
-          icon: "dart"
-        }
-      ]
-    }
+  selectedGroupData: {},
+  loggedInUserIsAdmin: false,
+  loggedInUser: {
+    // id: "57b221d7-eb5d-43b9-83e6-352bc8f4b906",
+    // displayName: "Default User",
+    // jobTitle: "Manager",
+    // image: "https://www.globaleaks.org/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
   },
-  postsData: [
-    {
-      id: 0,
-      text:
-        "his classification provides a dichotomy between employment for pay (groups G and D) and employment for profit (groups F, C and E)",
-      owner: {
-        id: 0,
-        firstName: "Kevin",
-        lastName: "Wales",
-        image:
-          "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-      },
-      createDate: "3h",
-      seenby: 10,
-      commentList: [
-        {
-          content:
-            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 0,
-            firstName: "Kevin",
-            lastName: "Wales",
-            image:
-              "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-          },
-          timeCreated: "30m"
-        },
-        {
-          content:
-            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 1,
-            firstName: "Andrew",
-            lastName: "Morph",
-            image:
-              "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
-          },
-          timeCreated: "1h"
-        }
-      ]
-    },
-    {
-      id: 1,
-      text:
-        "Meanwhile, the International Classification of Status at Work (ICSaW-18) provides an organizing framework for statistics classified by status at work. It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work. At its most detailed level, it comprises 20 mutually exclusive categories. The detailed status at work categories may be aggregated, based on the type of authority exercised by the worker, to form eight broad groups, which may be further aggregated to form a dichotomy between independent workers and dependent workers.",
-      owner: {
-        id: 0,
-        firstName: "Mathew",
-        lastName: "James",
-        image:
-          "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg"
-      }, 
-      createDate: "2 days ago",
-      seenby: 25,
-      commentList: [
-        {
-          content:
-            "It covers all jobs and work activities in all forms of work, including own-use production work, employment, unpaid trainee work, volunteer work and other forms of work.",
-          userInfo: {
-            id: 0,
-            firstName: "Kevin",
-            lastName: "Wales",
-            image:
-              "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg"
-          },
-          timeCreated: "1 day ago"
-        }
-      ]
-    },
-    {
-      id: 2,
-      text:
-        "A person's employment status defines what rights and responsibilities they have at work.",
-      owner: {
-        id: 0,
-        firstName: "Kevin",
-        lastName: "Harris",
-        image:
-          "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg"
-      },
-      createDate: "1 week ago",
-      commentList: [],
-      seenby: 33
-    }
-  ],
-  workmates: [
-    {
-      id: 0,
-      heading: "Kevin Harris",
-      image:
-        "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/04/Steven_Hallam-slide.jpg",
-      subtitle: "Senior Project Manager"
-    },
-    {
-      id: 0,
-      heading: "Mathew James",
-      image:
-        "https://keenthemes.com/preview/metronic/theme/assets/pages/media/profile/profile_user.jpg",
-      subtitle: "Lead Software Engineer"
-    },
-    {
-      id: 0,
-      heading: "Kevin Wales",
-      image:
-        "https://mk0abtastybwtpirqi5t.kinstacdn.com/wp-content/uploads/anthony-brebion.jpg",
-      subtitle: "Principle Software Engineer"
-    }
-  ]
-}; 
+  users: [],
+  myGroupsData: [],
+  activeGroups: [],
+  activeExploreGroups: [],
+  totalExploreGroups: 0,
+  totalMyGroups: 0,
+  postsData: [],
+  recentPostsData: [],
+  selectedMembers: [],
+};
 
-
-
-function rootReducer(state = initialState, action) { 
+function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_POSTS": return {...state, postsData: [...state.postsData,...action.posts]}
-    case "ADD_POST":
-      return { ...state, postsData: [...state.postsData,action.newPost] };
-    case "ADD_COMMENT":
-      var post = state.postsData.find(post => post.id === action.postId);
-      post.commentList.push(action.newComment);
-      return { ...state };
+    case "SET_LOGGED_IN_USER": {
+      return {
+        ...state,
+        loggedInUser: action.userObj,
+      };
+    }
+    case "SET_IS_ADMIN": {
+      return {
+        ...state,
+        loggedInUserIsAdmin: action.admin,
+      };
+    }
+    case "FETCH_USERS": {
+      return {
+        ...state,
+        users: [...action.users],
+      };
+    }
+    // Handling data
+    case "FETCH_POSTS": {
+      if (action.feed === "GroupFeed") {
+        return update(state, {
+          postsData: { $push: action.posts },
+          recentPostsData: [],
+        });
+      }
+      if (action.feed === "RecentPosts") {
+        return {
+          ...state,
+          recentPostsData: [...state.recentPostsData, ...action.posts],
+          postsData: [],
+        };
+      }
+    }
+    case "CREATE_GROUP": {
+      return {
+        ...state,
+        myGroupsData: [action.newGroup, ...state.myGroupsData],
+      };
+    }
+    case "FETCH_GROUPS_DATA": {
+      return {
+        ...state,
+        selectedGroupData: action.selectedGroupData,
+      };
+    }
+    case "FETCH_ACTIVE_GROUPS": {
+      return {
+        ...state,
+        activeGroups: action.activeGroups,
+        totalMyGroups: action.totalCount,
+      };
+    }
+    case "FETCH_ACTIVE_EXPLORE_GROUPS": {
+      return {
+        ...state,
+        activeExploreGroups: action.activeExploreGroups,
+        totalExploreGroups: action.totalCount,
+      };
+    }
+    case "SELECT_MEMBERS": {
+      return {
+        ...state,
+        selectedMembers: action.members,
+      };
+    }
+    case "LEAVE_GROUP": {
+      return {
+        ...state,
+        myGroupsData: state.myGroupsData.filter(
+          (group) => group.groupid !== action.groupid
+        ),
+      };
+    }
+    case "ADD_POST": {
+      return {
+        ...state,
+        [action.feed]: [action.newPost, ...state[action.feed]],
+      };
+    }
+
+    case "DELETE_POST": {
+      return {
+        ...state,
+        [action.feed]: state[action.feed].filter(
+          (item) => item.id !== action.id
+        ),
+      };
+    }
+
+    case "EDIT_POST": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.id
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            text: {
+              $set: action.text,
+            },
+          },
+        },
+      });
+    }
+
+    case "SEEN_POST": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            isSeen: {
+              $set: true,
+            },
+            seenCount: {
+              $set: ++action.seenCount,
+            },
+          },
+        },
+      });
+    }
+
+    case "ADD_COMMENT": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            commentsListPaging: {
+              data: {
+                $unshift: [action.newComment],
+              },
+            },
+            commentCount: {
+              $set: ++action.commentCount,
+            },
+          },
+        },
+      });
+    }
+
+    case "LOAD_MORE_COMMENTS": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            commentsListPaging: {
+              data: {
+                $push: [...action.newComments],
+              },
+            },
+          },
+        },
+      });
+    }
+
+    case "DELETE_COMMENT": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      let commentIndex = state[action.feed][
+        postIndex
+      ].commentsListPaging.data.findIndex(
+        (comment) => comment.id === action.commentId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            commentsListPaging: {
+              data: {
+                $splice: [[commentIndex, 1]],
+              },
+            },
+            commentCount: {
+              $set: --action.commentCount,
+            },
+          },
+        },
+      });
+    }
+
+    case "EDIT_COMMENT": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      let commentIndex = state[action.feed][
+        postIndex
+      ].commentsListPaging.data.findIndex(
+        (comment) => comment.id === action.commentId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            commentsListPaging: {
+              data: {
+                [commentIndex]: {
+                  commentText: {
+                    $set: action.commentText,
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+    }
+
+    case "LIKE_POST": {
+      if (action.feed === "GroupFeed") {
+        let postIndex = state.postsData.findIndex(
+          (post) => post.id === action.postId
+        );
+        return update(state, {
+          postsData: {
+            [postIndex]: {
+              likeCount: {
+                $set: ++action.likeCount,
+              },
+            },
+          },
+        });
+      }
+      if (action.feed === "RecentPosts") {
+        let postIndex = state.recentPostsData.findIndex(
+          (post) => post.id === action.postId
+        );
+        return update(state, {
+          recentPostsData: {
+            [postIndex]: {
+              likeCount: {
+                $set: ++action.likeCount,
+              },
+            },
+          },
+        });
+      }
+    }
+
+    case "DISLIKE_POST": {
+      let postIndex = state[action.feed].findIndex(
+        (post) => post.id === action.postId
+      );
+      return update(state, {
+        [action.feed]: {
+          [postIndex]: {
+            likeCount: {
+              $set: --action.likeCount,
+            },
+          },
+        },
+      });
+    }
+
     default:
       return state;
   }

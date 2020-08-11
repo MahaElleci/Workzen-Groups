@@ -1,9 +1,0 @@
-@import '../../Shared/variables.scss';
-.contribution-count {
-  display: flex;
-  justify-content: space-between;
-  &__item{
-      color: $gray-text; 
-      font-size: 0.8rem;
-  }
-}

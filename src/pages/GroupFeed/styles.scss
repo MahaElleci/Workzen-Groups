@@ -1,0 +1,49 @@
+@import "../../CommonStyles/variables.scss";
+.group-cover {
+  display: contents;
+
+}
+
+.group-options {
+  .dropdown-menu {
+    transform: translate3d(-138px, 52px, 0px) !important;
+  }
+}
+
+.groups-tabs-wrapper {
+  width: 100%;
+}
+
+.layout-feeds {
+  margin: 0 40px;
+  width: 100%;
+  padding: 0;
+}
+
+.layout-main-content {
+  background-color: $white-bg;
+  padding-right: 10px;
+  margin: 1.5rem auto 0 auto;
+}
+
+.layout-right-content {
+  margin-top: 1.5rem;
+  min-width: 315px;
+}
+
+
+.groups-activity-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+
+  .placeholder {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 0 20px 0 #e8e8e8;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../../CommonStyles/variables.scss";
+
+.groups-userInfo-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+
+  &__userImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0.5rem;
+    object-fit: cover;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+
+    .username {
+      color: $zen-primary-color;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .groupname {
+      font-size: 14px;
+      color: $primary-btn;
+    }
+
+    .timeStamp {
+      color: $gray-text;
+    }
+  }
+}

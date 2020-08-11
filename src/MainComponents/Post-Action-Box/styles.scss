@@ -1,0 +1,77 @@
+@import "../../CommonStyles/variables.scss";
+
+.groups-createPost {
+  background-color: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  box-shadow: 0 0 20px 0 #e8e8e8;
+  margin-bottom: 10px;
+  position: relative; 
+  width: 100%;
+
+  &__textarea {
+    width: 100%;
+    resize: none;
+    padding: 1rem;
+    padding-left: 4.5rem;
+    border: none;
+    padding-top: 1.2rem;
+    border-top: 1px solid $gray-border;
+    border-bottom: 1px solid $gray-border;
+    color: #424242;
+    font-size: 1rem;
+    min-height: 130px;
+    margin-bottom: 0.7rem;
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+  .userImage {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 1rem;
+    margin-top: 0.7rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  button {
+    float: right;
+    margin-right: 1rem;
+  }
+
+}
+
+.group-select {
+  padding: 0 0 1rem 0;
+  margin: 0;
+  margin-bottom: .7rem;
+  border-bottom: 1px solid $gray-border;
+
+  .select-placeholder {
+    border-bottom: 1px solid;
+    color: $gray-text;
+  }
+  label{
+    color: $gray-text;
+  }
+  select {
+    color: $gray-text;
+    &:focus {
+      box-shadow: none;
+      border-color: $gray-text;
+    }
+  }
+}
+
+.groups-spinner-placeholder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}

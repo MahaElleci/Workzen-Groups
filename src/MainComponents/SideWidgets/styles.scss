@@ -1,0 +1,68 @@
+@import "../../CommonStyles/variables.scss";
+.groups-widget-wrapper {
+  background-color: $white-bg;
+  box-shadow: 0 0 20px 0 #e8e8e8;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 10px; 
+  .spinner-placeholder {
+    display: flex;
+    justify-content: center;
+  }
+  .widget-header { 
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 1rem;
+    h5 {
+      color: $zen-primary-color;
+      text-transform: uppercase;
+      font-weight: 700; 
+      font-size: 0.9rem; 
+      margin-bottom: 0;
+    } 
+    .add-members {
+      color: $zen-primary-color; 
+      font-size: 0.9rem; 
+      font-weight: 500; 
+      &:focus,:active {
+        outline: none;
+      }
+    }
+  } 
+  .text-wrapper{
+    p {
+      color: $zen-primary-color;
+      font-size: 0.9rem; 
+      line-height: 1.3rem;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center; 
+    padding: 0.5rem;
+    &__image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      object-fit: cover; 
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+      .title {
+        color: $zen-primary-color;
+        font-size: 0.9rem;
+        margin-bottom: 0; 
+        font-weight: 600;
+      }
+      .subtitle {
+        margin-bottom: 0;
+        font-size: 0.7rem;
+        color: #777777;
+      }
+    }
+  }
+}

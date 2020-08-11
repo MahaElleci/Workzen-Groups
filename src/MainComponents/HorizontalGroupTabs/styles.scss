@@ -1,0 +1,30 @@
+@import "../../CommonStyles/variables.scss";
+
+.horizontal-wrapper {
+  p {
+    padding: 0.7rem;
+    color: $zen-primary-color;
+    font-weight: 700; 
+    margin: 0;
+    margin-left: 0.5rem; 
+  }
+  .horizontal-tabs_wrapper {
+    border-top: 2px solid $light-blue-bg;
+    border-bottom: 2px solid $light-blue-bg;
+    .nav {
+      .nav-item {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        padding: 0.5rem;
+        a {
+          color: $zen-primary-color;
+          font-weight: 600;
+          padding: 0.7rem;
+        }
+        &.active {
+          background-color: $light-blue-bg;
+        }
+      }
+    }
+  }
+}

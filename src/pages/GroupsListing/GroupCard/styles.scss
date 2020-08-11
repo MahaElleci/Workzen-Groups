@@ -1,0 +1,94 @@
+@import "../../../CommonStyles/variables.scss";
+
+.groupCard-wrapper {
+  position: relative;
+  padding: 1.25rem;
+  padding-bottom: 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 #e8e8e8;
+  display: flex;
+  flex: 32.333%;
+  max-width: 32.333%;
+  margin: .5%;
+  align-items: center;
+
+  .logo {
+   margin-right: 1rem;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin-bottom: 0;
+      font-size: 0.8rem;
+    }
+
+    .title {
+      color: $zen-primary-color;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .privacy {
+      color: $gray-text;
+    }
+  }
+
+  &__join-btn {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    position: absolute;
+    bottom: .75rem;
+    right: 1.25rem;
+    font-size: 14px; 
+    color: $zen-primary-color; 
+    font-weight: 500;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &__actions-wrap {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 4px 4px #e8e8e8;
+    width: 160px;
+    height: 50px;
+    position: absolute;
+    bottom: -40px;
+    right: 16px;
+    z-index: 1;
+
+    &:focus {
+      outline: none;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: none;
+      position: absolute;
+      bottom: .75rem;
+      right: 1.25rem;
+      font-size: 14px;
+
+      &:hover {
+        opacity: .7;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

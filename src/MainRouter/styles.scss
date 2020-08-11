@@ -1,0 +1,24 @@
+@import "../CommonStyles/variables.scss";
+.groups-layout-wrapper {
+  display: flex;
+  width: 100%;
+}
+body .Toastify {
+  &__toast {
+    &.groups-toast {
+      background: $success;
+      color: #fff;
+      border-radius: 5px;
+      &--error{
+        background: $error;
+      }
+    }
+  }
+  &__close-button {
+    color: #fff;
+    opacity: 1;
+    &:hover {
+      opacity: .4;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../../CommonStyles/variables.scss";
+.groups-comment {
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+  position: relative;
+  &__user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+  }
+  &__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: #f3f3f7;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  &__edit-mode {
+    margin-top: 10px;
+    display: flex;
+  }
+  &__save-edited {
+    color: $zen-primary-color;
+    font-size: 0.9rem;
+    font-weight: 500; 
+    width: 50px; 
+    padding: 0;
+    &:focus,
+    :active {
+      outline: none;
+    }
+  } 
+  &__cancel-edited {
+    color: $gray-text;
+    font-size: 0.9rem;
+    font-weight: 500;  
+    padding: 0;
+    width: 65px;
+    &:focus,
+    :active {
+      outline: none;
+    }
+  }
+  &__edit-input {
+    border: 0;
+    padding: 5px;
+    flex: 1;
+    margin-right: 5px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    padding: 0.7rem;
+    &:focus {
+      outline: 0;
+    }
+  }
+  &__user-text {
+    display: flex;
+    align-items: center;
+    .username {
+      color: $zen-primary-color;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    .time-stamp {
+      color: $gray-text;
+      margin-left: 8px;
+    }
+  }
+  &__content {
+    font-size: 0.9rem;
+  }
+}
+.comment-actions{
+  position: absolute;
+  right: 0;
+  top: 0;
+}

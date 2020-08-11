@@ -1,0 +1,130 @@
+@import "../../CommonStyles/variables.scss";
+.groups-sidenav-wrapper {
+  &__heading {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: $zen-primary-color;
+    margin-bottom: 2rem;
+  }
+  &__groups, &__explore {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    &__items {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      .groupIcon {
+       
+      }
+      .groupName {
+        color: $zen-primary-color;
+        margin-bottom: 0;
+        margin-left: 1rem; 
+        font-size: 15px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &__route-item {
+    padding: 10px 0;
+    margin-bottom: 0;
+    color: $zen-primary-color;
+    font-size: 16px;
+  }
+}
+.active {
+  background-color: $zen-light-color;
+}
+
+.groups-create-group-form {
+  .form-group {
+    textarea {
+      resize: none;
+      padding: 0.5rem;
+      width: 100%;
+      border: 1px solid $zen-light-color;
+      &:focus,
+      :active {
+        outline: none;
+      } 
+      &::placeholder {
+        font-size: 0.9rem;
+        color: $gray-text;
+      } 
+    } 
+    .form-check {
+      margin-bottom: 0.3rem;  
+      align-items: center;
+      input {
+        margin-top: 0; 
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    input {
+      border: 1px solid $zen-light-color;
+      &:focus,
+      :active {
+        outline: none;
+        box-shadow: none;
+      }
+      &::placeholder {
+        font-size: 0.9rem;
+        color: $gray-text;
+      }
+    }
+    label {
+      color: $zen-primary-color;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .form-check{
+      display: flex;
+    }
+  }
+}
+
+.seemore-link {
+  display: flex; 
+  align-items: center;
+  a {
+    color: $zen-primary-color;
+    text-decoration: none; 
+    margin-right: 0.5rem;  
+    font-weight: 600;
+    font-size: 15px; 
+    text-decoration: underline;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+.feeds-link {
+  display: flex;
+  padding: 0.5rem;
+  margin: 1rem 0rem;
+  border-bottom: 1px solid $gray-border; 
+  background-color: #E2E5ED;
+  a {
+    color: $zen-primary-color;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+} 
+.form-validation-msg {
+  color: $error;
+}
