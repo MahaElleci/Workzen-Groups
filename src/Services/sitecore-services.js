@@ -1,4 +1,4 @@
-import sitecoreRequester from "../Requesters/sitecoreRequester";
+import sitecoreRequester from "./Requesters/sitecoreRequester";
 
 function usersMapper(data) {
   var membersIds = [];

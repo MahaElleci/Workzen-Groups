@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import Dropdown from "../../../SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../../Shared/Dropdown/Dropdown";
 
 import JavascriptTimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";

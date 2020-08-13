@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import AppModal from "../../SharedComponents/Modal/Modal";
-import Spinner from "../../SharedComponents/Loader/Loader";
-import Icon from "../../SharedComponents/IcoMoon/IcoMoon";
-import Button from "../../SharedComponents/Button/Button";
+import AppModal from "../../Shared/Modal/Modal";
+import Spinner from "../../Shared/Loader/Loader";
+import Icon from "../../Shared/IcoMoon/IcoMoon";
+import Button from "../../Shared/Button/Button";
 
-import InitialsPlaceholder from "../../SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
+import InitialsPlaceholder from "../../Shared/InitialsPlaceholder/InitialsPlaceholder";
 
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";

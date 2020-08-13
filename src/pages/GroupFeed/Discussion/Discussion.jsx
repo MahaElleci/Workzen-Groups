@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
-import Feed from "../../../components/MainComponents/Feed/feed";
-import SideWidget from "../../../components/MainComponents/SideWidgets/SideWidgets";
-import Button from "../../../components/SharedComponents/Button/Button";
-import AppModal from "../../../components/SharedComponents/Modal/Modal";
+import Feed from "../../../components/Main/Feed/feed";
+import SideWidget from "../../../components/Main/SideWidgets/SideWidgets";
+import Button from "../../../components/Shared/Button/Button";
+import AppModal from "../../../components/Shared/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
-import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
+import EmptyState from "../../../components/Shared/EmptyState/EmptyState";
+import SearchBar from "../../../components/Shared/SearchBar/SearchBar";
 import { addMembers_service } from "../../../Services/group-services";
 import { toast } from "react-toastify";
 

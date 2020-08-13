@@ -1,4 +1,4 @@
-import dataRequester from "../Requesters/dataRequester";
+import dataRequester from "./Requesters/dataRequester";
 
 export const editComment_service = function (commentId, commentObj) {
   return dataRequester({

@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Form, Row, Col } from "react-bootstrap";
 
-import Button from "../../../components/SharedComponents/Button/Button";
-import HeaderBar from "../../../components/SharedComponents/HeaderBar/HeaderBar";
+import Button from "../../../components/Shared/Button/Button";
+import HeaderBar from "../../../components/Shared/HeaderBar/HeaderBar";
 
 import { editGroup_service } from "../../../Services/groupAdmin-services";
 

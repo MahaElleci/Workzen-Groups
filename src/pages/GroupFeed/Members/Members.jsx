@@ -5,14 +5,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import MemberCard from "./MemberCard/MemberCard";
-import HeaderBar from "../../../components/SharedComponents/HeaderBar/HeaderBar";
-import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
-import Dropdown from "../../../components/SharedComponents/Dropdown/Dropdown";
-import Spinner from "../../../components/SharedComponents/Loader/Loader";
-import Button from "../../../components/SharedComponents/Button/Button";
-import AppModal from "../../../components/SharedComponents/Modal/Modal";
-import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+import HeaderBar from "../../../components/Shared/HeaderBar/HeaderBar";
+import EmptyState from "../../../components/Shared/EmptyState/EmptyState";
+import Dropdown from "../../../components/Shared/Dropdown/Dropdown";
+import Spinner from "../../../components/Shared/Loader/Loader";
+import Button from "../../../components/Shared/Button/Button";
+import AppModal from "../../../components/Shared/Modal/Modal";
+import SearchBar from "../../../components/Shared/SearchBar/SearchBar";
+import Icon from "../../../components/Shared/IcoMoon/IcoMoon";
 
 import { addMembers_service } from "../../../Services/group-services";
 import {

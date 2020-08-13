@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-import AppModal from "../../../SharedComponents/Modal/Modal";
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
-import EmptyState from "../../../SharedComponents/EmptyState/EmptyState";
-import Loader from "../../../SharedComponents/Loader/Loader";
+import AppModal from "../../../Shared/Modal/Modal";
+import Icon from "../../../Shared/IcoMoon/IcoMoon";
+import EmptyState from "../../../Shared/EmptyState/EmptyState";
+import Loader from "../../../Shared/Loader/Loader";
 
 import { getSeenList_service } from "../../../../Services/post-services";
 import { getUsers_service } from "../../../../Services/sitecore-services";

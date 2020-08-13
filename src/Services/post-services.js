@@ -1,4 +1,4 @@
-import dataRequester from "../Requesters/dataRequester";
+import dataRequester from "./Requesters/dataRequester";
 
 export const getLikes_service = function (groupId, postId) {
   return dataRequester({

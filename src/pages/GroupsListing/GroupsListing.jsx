@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import GroupHeader from "./Header/Header";
 import GroupCard from "./GroupCard/GroupCard";
-import Button from "../../components/SharedComponents/Button/Button";
-import Spinner from "../../components/SharedComponents/Loader/Loader";
+import Button from "../../components/Shared/Button/Button";
+import Spinner from "../../components/Shared/Loader/Loader";
 import axios from "axios";
 import {
   fetchMyGroupData_service,

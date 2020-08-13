@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import InitialsPlaceholder from "../../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+import InitialsPlaceholder from "../../../components/Shared/InitialsPlaceholder/InitialsPlaceholder";
+import Icon from "../../../components/Shared/IcoMoon/IcoMoon";
 
 import {
   joinPublicGroup_service,

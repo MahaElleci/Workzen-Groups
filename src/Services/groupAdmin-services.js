@@ -1,4 +1,4 @@
-import dataRequester from "../Requesters/dataRequester";
+import dataRequester from "./Requesters/dataRequester";
 
 export const deleteGroup_service = function (groupId) {
   return dataRequester({

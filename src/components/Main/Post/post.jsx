@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 
 import UserInfo from "./UserInfo/UserInfo";
 import CommentBox from "./Comment-Box/CommentBox";
-import Dropdown from "../../SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../Shared/Dropdown/Dropdown";
 import UserActions from "./UserActions/UserActions";
 import ContributionCount from "./ContributionCount/ContributionCount";
 import CommentItem from "./CommentItem/CommentItem";
 import axios from "axios";
 
-import AppModal from "../../SharedComponents/Modal/Modal";
-import Loader from "../../SharedComponents/Loader/Loader";
-import Button from "../../SharedComponents/Button/Button";
+import AppModal from "../../Shared/Modal/Modal";
+import Loader from "../../Shared/Loader/Loader";
+import Button from "../../Shared/Button/Button";
 import { toast } from "react-toastify";
 
 import {

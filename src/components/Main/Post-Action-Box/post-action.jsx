@@ -5,8 +5,8 @@ import JavascriptTimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Button from "../../SharedComponents/Button/Button";
-import Spinner from "../../SharedComponents/Loader/Loader";
+import Button from "../../Shared/Button/Button";
+import Spinner from "../../Shared/Loader/Loader";
 
 import { addPost_service } from "../../../Services/post-services";
 import { fetchMyGroupData_service } from "../../../Services/fetch-services";

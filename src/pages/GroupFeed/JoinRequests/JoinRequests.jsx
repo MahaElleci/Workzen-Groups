@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import HeaderBar from "../../../components/SharedComponents/HeaderBar/HeaderBar";
-import Button from "../../../components/SharedComponents/Button/Button";
+import HeaderBar from "../../../components/Shared/HeaderBar/HeaderBar";
+import Button from "../../../components/Shared/Button/Button";
 import UserCard from "../Members/MemberCard/MemberCard";
-import Spinner from "../../../components/SharedComponents/Loader/Loader";
+import Spinner from "../../../components/Shared/Loader/Loader";
 import {
   approveRequests_service,
   rejectRequests_service,

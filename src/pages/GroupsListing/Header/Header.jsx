@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+import Icon from "../../../components/Shared/IcoMoon/IcoMoon";
 
 import "./styles.scss";
 

@@ -5,18 +5,18 @@ import axios from "axios";
 import { Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-import Spinner from "../../components/SharedComponents/Loader/Loader";
-import AppModal from "../../components/SharedComponents/Modal/Modal";
-import Button from "../../components/SharedComponents/Button/Button";
+import Spinner from "../../components/Shared/Loader/Loader";
+import AppModal from "../../components/Shared/Modal/Modal";
+import Button from "../../components/Shared/Button/Button";
 import Media from "../../pages/GroupFeed/Media/Media";
 import Discussion from "../../pages/GroupFeed/Discussion/Discussion";
 import Members from "../../pages/GroupFeed/Members/Members";
 import Files from "../../pages/GroupFeed/Files/Files";
 import Coverphoto from "./CoverPhoto/CoverPhoto";
 import JoinRequests from "./JoinRequests/JoinRequests";
-import Dropdown from "../../components/SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../components/Shared/Dropdown/Dropdown";
 import Settings from "./Settings/Settings";
-import HorizonalGroupTabs from "../../components/MainComponents/HorizontalGroupTabs/HorizontalGroupTabs";
+import HorizonalGroupTabs from "../../components/Main/HorizontalGroupTabs/HorizontalGroupTabs";
 
 import {
   fetchGroupData_service,

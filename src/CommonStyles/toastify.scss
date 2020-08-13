@@ -1,3 +1,4 @@
+@import "../CommonStyles/variables.scss";
 .Toastify__toast-container {
     z-index: 9999;
     -webkit-transform: translate3d(0, 0, 9999px);
@@ -400,4 +401,24 @@
     animation-name: Toastify__slideOutUp; }
   
   .Toastify__slide-exit--bottom-center {
-    animation-name: Toastify__slideOutDown; }
+    animation-name: Toastify__slideOutDown; } 
+
+    body .Toastify {
+      &__toast {
+        &.groups-toast {
+          background: $success;
+          color: #fff;
+          border-radius: 5px;
+          &--error{
+            background: $error;
+          }
+        }
+      }
+      &__close-button {
+        color: #fff;
+        opacity: 1;
+        &:hover {
+          opacity: .4;
+        }
+      }
+    }

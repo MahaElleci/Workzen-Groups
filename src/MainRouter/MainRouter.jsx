@@ -8,7 +8,6 @@ import axios from "axios";
 import { getUsers_service } from "../Services/sitecore-services";
 import { fetchloggedInUserId_service } from "../Services/fetch-services";
 import API_config from "../config";
-import "./styles.scss";
 
 const MainRouter = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import EmptyState from "../../SharedComponents/EmptyState/EmptyState";
-import Spinner from "../../SharedComponents/Loader/Loader";
+import EmptyState from "../../Shared/EmptyState/EmptyState";
+import Spinner from "../../Shared/Loader/Loader";
 import "./styles.scss";
 import axios from "axios";
 

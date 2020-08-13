@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import JavascriptTimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
+import Icon from "../../../Shared/IcoMoon/IcoMoon";
 
 import { addComment_service } from "../../../../Services/comment-services";
 

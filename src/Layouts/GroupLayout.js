@@ -1,7 +1,8 @@
 import React from 'react';
-import GroupSideNav from '../components/MainComponents/GroupSideNav/GroupSideNav';
+import GroupSideNav from '../components/Main/GroupSideNav/GroupSideNav';
 import { Container } from 'react-bootstrap';
-import SideContentPlaceholder from '../components/MainComponents/SideContenPlaceholder/SideContentPlaceholder';
+import SideContentPlaceholder from '../components/Main/SideContenPlaceholder/SideContentPlaceholder';
+import "./styles.scss"; 
 
 export default function GroupLayout({ children }) {
     return (

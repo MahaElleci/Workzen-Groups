@@ -1,4 +1,4 @@
-import API_config from "../config";
+import API_config from "../../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 const baseUrl = API_config.apiGateway.URL;

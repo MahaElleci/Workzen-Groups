@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
-import AppModal from "../../../components/SharedComponents/Modal/Modal";
-import Button from "../../../components/SharedComponents/Button/Button";
+import Icon from "../../../components/Shared/IcoMoon/IcoMoon";
+import AppModal from "../../../components/Shared/Modal/Modal";
+import Button from "../../../components/Shared/Button/Button";
 
 import {
   joinPrivateGroup_service,

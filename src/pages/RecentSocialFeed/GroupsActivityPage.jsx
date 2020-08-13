@@ -6,11 +6,11 @@ import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Form } from "react-bootstrap";
 
-import Feed from "../../components/MainComponents/Feed/feed";
-import Icon from "../../components/SharedComponents/IcoMoon/IcoMoon";
-import Button from "../../components/SharedComponents/Button/Button";
-import AppModal from "../../components/SharedComponents/Modal/Modal";
-import InitialsPlaceholder from "../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
+import Feed from "../../components/Main/Feed/feed";
+import Icon from "../../components/Shared/IcoMoon/IcoMoon";
+import Button from "../../components/Shared/Button/Button";
+import AppModal from "../../components/Shared/Modal/Modal";
+import InitialsPlaceholder from "../../components/Shared/InitialsPlaceholder/InitialsPlaceholder";
 
 import { createGroup_service } from "../../Services/group-services";
 import { fetchRecentPosts_service } from "../../Services/fetch-services";

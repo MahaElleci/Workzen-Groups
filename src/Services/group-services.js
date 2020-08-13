@@ -1,4 +1,4 @@
-import dataRequester from "../Requesters/dataRequester";
+import dataRequester from "./Requesters/dataRequester";
 
 export const createGroup_service = function (groupObj) {
   return dataRequester({

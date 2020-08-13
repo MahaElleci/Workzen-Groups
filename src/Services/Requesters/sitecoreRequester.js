@@ -1,7 +1,7 @@
-import API_config from "../config";
+import API_config from "../../config";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { notify } from "../Services/toastify-service";
+import { notify } from "../toastify-service";
 const baseUrl = "https://workzen93dev-cd.azurewebsites.net/api";
 
 const unauthorizedStatus = [403, 401];
