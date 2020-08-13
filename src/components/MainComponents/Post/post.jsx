@@ -3,25 +3,24 @@ import { useDispatch } from "react-redux";
 
 import UserInfo from "./UserInfo/UserInfo";
 import CommentBox from "./Comment-Box/CommentBox";
-import Dropdown from "../../components/SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../SharedComponents/Dropdown/Dropdown";
 import UserActions from "./UserActions/UserActions";
 import ContributionCount from "./ContributionCount/ContributionCount";
 import CommentItem from "./CommentItem/CommentItem";
 import axios from "axios";
 
-import modal from "../../components/SharedComponents/Modal/Modal";
-import Button from "../../components/SharedComponents/Button/Button";
+import AppModal from "../../SharedComponents/Modal/Modal";
+import Loader from "../../SharedComponents/Loader/Loader";
+import Button from "../../SharedComponents/Button/Button";
 import { toast } from "react-toastify";
 
 import {
   editPost_service,
   deletePost_service,
   viewPost_service,
-} from "../../Services/post-services";
-import { getUsers_service } from "../../Services/sitecore-services";
-import { getComments_service } from "../../Services/comment-services";
-
-import Loader from "../../components/SharedComponents/Loader/Loader";
+} from "../../../Services/post-services";
+import { getUsers_service } from "../../../Services/sitecore-services";
+import { getComments_service } from "../../../Services/comment-services";
 
 import "./styles.scss";
 
@@ -185,7 +184,7 @@ const Post = ({ data, loggedInUser, isGroup, isMember, isVisible }) => {
         <div className="post-actions">{returnDropdown()}</div>
       )}
       <div className="groups-post-wrapper__edit-modal">
-        <modal
+        <AppModal
           header={`${modalType} post`}
           onClose={
             modalType === "Edit"
@@ -218,7 +217,7 @@ const Post = ({ data, loggedInUser, isGroup, isMember, isVisible }) => {
                 : () => showConfirmation(false)
             }
           />
-        </modal>
+        </AppModal>
       </div>
       <p className="groups-post-wrapper__content">{data.text}</p>
       <div className="groups-post-wrapper__contributions">

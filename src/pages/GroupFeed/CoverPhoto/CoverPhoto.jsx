@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
-import modal from "../../../components/SharedComponents/Modal/Modal";
+import AppModal from "../../../components/SharedComponents/Modal/Modal";
 import Button from "../../../components/SharedComponents/Button/Button";
 
 import {
@@ -161,7 +161,7 @@ const Coverphoto = ({
 
   return (
     <>
-      <modal
+      <AppModal
         header="Leave group"
         onClose={() => setShowmodal(false)}
         shown={showmodal}
@@ -180,7 +180,7 @@ const Coverphoto = ({
           size={"medium"}
           onSubmitHandler={() => setShowmodal(false)}
         />
-      </modal>
+      </AppModal>
       <div className="photo" style={{ background: `url(${image})` }}>
         {children}
         <button

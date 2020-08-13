@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import EmptyState from "../../components/SharedComponents/EmptyState/EmptyState";
-import Spinner from "../../components/SharedComponents/Loader/Loader";
+import EmptyState from "../../SharedComponents/EmptyState/EmptyState";
+import Spinner from "../../SharedComponents/Loader/Loader";
 import "./styles.scss";
 import axios from "axios";
 
-import { getUsers_service } from "../../Services/sitecore-services";
+import { getUsers_service } from "../../../Services/sitecore-services";
 
 const SideWidgets = ({ header, data, children, type, emptyState }) => {
   const [membersInfo, setMembersInfo] = useState([]);

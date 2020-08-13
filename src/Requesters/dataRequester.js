@@ -2,11 +2,9 @@ import API_config from "../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 const baseUrl = API_config.apiGateway.URL;
-// const CancelToken = axios.CancelToken;
 
 export default function dataRequester(config) {
   return new Promise(function (resolve, reject) {
-    // const source = CancelToken.source();
     const axiosOptions = {
       ...config,
       url: `${baseUrl}${config.url}`,

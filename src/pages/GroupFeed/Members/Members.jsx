@@ -10,7 +10,7 @@ import EmptyState from "../../../components/SharedComponents/EmptyState/EmptySta
 import Dropdown from "../../../components/SharedComponents/Dropdown/Dropdown";
 import Spinner from "../../../components/SharedComponents/Loader/Loader";
 import Button from "../../../components/SharedComponents/Button/Button";
-import modal from "../../../components/SharedComponents/Modal/Modal";
+import AppModal from "../../../components/SharedComponents/Modal/Modal";
 import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
 import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
 
@@ -243,7 +243,7 @@ const MembersListing = () => {
           ) : null}
         </HeaderBar>
       </div>
-      <modal
+      <AppModal
         header={"Add Member"}
         body={<SearchBar />}
         shown={showModal}
@@ -264,7 +264,7 @@ const MembersListing = () => {
           text={"Cancel"}
           onSubmitHandler={() => setShowModal(false)}
         />
-      </modal>
+      </AppModal>
       <div className="membersListing-filter-bar">
         <div className="membersListing-filter-bar__results d-none d-md-block">
           Showing

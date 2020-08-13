@@ -9,7 +9,7 @@ import { Form } from "react-bootstrap";
 import Feed from "../../components/MainComponents/Feed/feed";
 import Icon from "../../components/SharedComponents/IcoMoon/IcoMoon";
 import Button from "../../components/SharedComponents/Button/Button";
-import modal from "../../components/SharedComponents/Modal/Modal";
+import AppModal from "../../components/SharedComponents/Modal/Modal";
 import InitialsPlaceholder from "../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
 
 import { createGroup_service } from "../../Services/group-services";
@@ -170,7 +170,7 @@ const GroupsActivityPage = () => {
   return (
     <Container className="groups-activity-wrapper">
       {/*mobile tabs*/}
-      <modal
+      <AppModal
         header="Create Group"
         shown={showModal}
         onClose={() => setShowModal(false)}
@@ -190,7 +190,7 @@ const GroupsActivityPage = () => {
           size="medium"
           text={"Cancel"}
         />
-      </modal>
+      </AppModal>
       <Row className="groups-mobile w-100 d-md-none">
         <Col
           md={12}

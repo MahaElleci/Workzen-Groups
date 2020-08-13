@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Spinner from "../../components/SharedComponents/Loader/Loader";
-import Icon from "../../components/SharedComponents/IcoMoon/IcoMoon";
-import Button from "../../components/SharedComponents/Button/Button";
-import modal from "../../components/SharedComponents/Modal/Modal";
-import InitialsPlaceholder from "../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
+import AppModal from "../../SharedComponents/Modal/Modal";
+import Spinner from "../../SharedComponents/Loader/Loader";
+import Icon from "../../SharedComponents/IcoMoon/IcoMoon";
+import Button from "../../SharedComponents/Button/Button";
+
+import InitialsPlaceholder from "../../SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
 
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,8 +15,8 @@ import { Form } from "react-bootstrap";
 import {
   fetchTopActiveExploreGroups_service,
   fetchTopActiveGroups_service,
-} from "../../Services/fetch-services";
-import { createGroup_service } from "../../Services/group-services";
+} from "../../../Services/fetch-services";
+import { createGroup_service } from "../../../Services/group-services";
 
 import "./styles.scss";
 
@@ -183,7 +184,7 @@ const SideNavigation = () => {
         <Link to="/workzen-socialfeed">Feeds</Link>
       </div>
 
-      <modal
+      <AppModal
         header="Create Group"
         shown={showModal}
         onClose={() => setShowModal(false)}
@@ -203,7 +204,7 @@ const SideNavigation = () => {
           size="medium"
           text={"Cancel"}
         />
-      </modal>
+      </AppModal>
       <h5 className="groups-sidenav-wrapper__route-item ">Groups I'm In</h5>
       {isLoading ? (
         <div className="loader-placeholder">

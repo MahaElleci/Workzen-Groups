@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
 
 import {
   likePost_service,
   unlikePost_service,
-} from "../../../Services/post-services";
+} from "../../../../Services/post-services";
 
 import "./styles.scss";
 

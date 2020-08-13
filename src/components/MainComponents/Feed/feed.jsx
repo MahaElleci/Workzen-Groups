@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import VisibilitySensor from "react-visibility-sensor";
 
 import Post from "../Post/post";
-import Button from "../../components/SharedComponents/Button/Button";
+import Button from "../../SharedComponents/Button/Button";
 import PostBox from "../Post-Action-Box/post-action";
-import EmptyState from "../../components/SharedComponents/EmptyState/EmptyState";
-import Spinner from "../../components/SharedComponents/Loader/Loader";
+import EmptyState from "../../SharedComponents/EmptyState/EmptyState";
+import Spinner from "../../SharedComponents/Loader/Loader";
 
 import "./styles.scss";
 

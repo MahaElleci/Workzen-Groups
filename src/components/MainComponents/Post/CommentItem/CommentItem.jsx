@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import Dropdown from "../../../components/SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../../SharedComponents/Dropdown/Dropdown";
 
 import JavascriptTimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
@@ -11,8 +11,8 @@ import axios from "axios";
 import {
   editComment_service,
   deleteComment_service,
-} from "../../../Services/comment-services";
-import { getUsers_service } from "../../../Services/sitecore-services";
+} from "../../../../Services/comment-services";
+import { getUsers_service } from "../../../../Services/sitecore-services";
 
 import "./styles.scss";
 

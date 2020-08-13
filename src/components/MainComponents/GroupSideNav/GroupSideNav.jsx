@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { ListGroup } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Icon from "../../components/SharedComponents/IcoMoon/IcoMoon";
-import Spinner from "../../components/SharedComponents/Loader/Loader";
+import Icon from "../../SharedComponents/IcoMoon/IcoMoon";
+import Spinner from "../../SharedComponents/Loader/Loader";
  
 import "./styles.scss"; 
 

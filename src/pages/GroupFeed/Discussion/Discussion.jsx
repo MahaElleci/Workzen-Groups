@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import Feed from "../../../components/MainComponents/Feed/feed";
 import SideWidget from "../../../components/MainComponents/SideWidgets/SideWidgets";
 import Button from "../../../components/SharedComponents/Button/Button";
-import modal from "../../../components/SharedComponents/Modal/Modal";
+import AppModal from "../../../components/SharedComponents/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
 import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
@@ -101,7 +101,7 @@ function Discussion({
                 </button>
               ) : null}
             </SideWidget>
-            <modal
+            <AppModal
               header={"Add Member"}
               body={<SearchBar />}
               shown={showAddMember}
@@ -122,7 +122,7 @@ function Discussion({
                 text={"Cancel"}
                 onSubmitHandler={() => handleAddMember(false)}
               />
-            </modal>
+            </AppModal>
           </div>
         </Col>
       </Row>

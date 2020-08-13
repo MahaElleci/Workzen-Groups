@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import Spinner from "../../components/SharedComponents/Loader/Loader";
-import modal from "../../components/SharedComponents/Modal/Modal";
+import AppModal from "../../components/SharedComponents/Modal/Modal";
 import Button from "../../components/SharedComponents/Button/Button";
 import Media from "../../pages/GroupFeed/Media/Media";
 import Discussion from "../../pages/GroupFeed/Discussion/Discussion";
@@ -221,7 +221,7 @@ const GroupFeed = (props) => {
   // JSX
   return (
     <>
-      <modal
+      <AppModal
         header="Confirm Delete Group"
         body="Are you sure you want to delete this group?"
         onClose={() => setShowmodal(false)}
@@ -240,7 +240,7 @@ const GroupFeed = (props) => {
           size={"medium"}
           onSubmitHandler={() => setShowmodal(false)}
         />
-      </modal>
+      </AppModal>
       <Row className="group-cover" noGutters="true">
         <Coverphoto
           image={

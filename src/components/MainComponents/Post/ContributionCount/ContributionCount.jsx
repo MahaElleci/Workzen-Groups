@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
-import modal from "../../../components/SharedComponents/Modal/Modal";
-import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
-import Loader from "../../../components/SharedComponents/Loader/Loader";
+import AppModal from "../../../SharedComponents/Modal/Modal";
+import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
+import EmptyState from "../../../SharedComponents/EmptyState/EmptyState";
+import Loader from "../../../SharedComponents/Loader/Loader";
 
-import { getSeenList_service } from "../../../Services/post-services";
-import { getUsers_service } from "../../../Services/sitecore-services";
+import { getSeenList_service } from "../../../../Services/post-services";
+import { getUsers_service } from "../../../../Services/sitecore-services";
 
 import "./styles.scss";
 
@@ -39,7 +39,7 @@ const ContributionCount = ({ data }) => {
   }
   return (
     <>
-      <modal
+      <AppModal
         header={"People viewed this post"}
         size={"md"}
         centered={true}
