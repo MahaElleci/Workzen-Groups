@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { InputGroup, FormControl } from "react-bootstrap";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 import MemberCard from "./MemberCard/MemberCard";
-import HeaderBar from "../../../SharedComponents/HeaderBar/HeaderBar";
-import EmptyState from "../../../SharedComponents/EmptyState/EmptyState";
-import Dropdown from "../../../SharedComponents/Dropdown/Dropdown";
-import Spinner from "../../../SharedComponents/Loader/Loader";
-import { toast } from "react-toastify";
-import Button from "../../../SharedComponents/Button/Button";
-import PopUp from "../../../SharedComponents/Modal/Modal";
-import SearchBar from "../../../SharedComponents/SearchBar/SearchBar";
-import { addMembers_service } from "../../../Services/group-services";
+import HeaderBar from "../../../components/SharedComponents/HeaderBar/HeaderBar";
+import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
+import Dropdown from "../../../components/SharedComponents/Dropdown/Dropdown";
+import Spinner from "../../../components/SharedComponents/Loader/Loader";
+import Button from "../../../components/SharedComponents/Button/Button";
+import modal from "../../../components/SharedComponents/Modal/Modal";
+import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
+import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
 
+import { addMembers_service } from "../../../Services/group-services";
 import {
   addAdmin_service,
   removeAdmin_service,
   removeMember_service,
 } from "../../../Services/groupAdmin-services";
-
 import { getUsers_service } from "../../../Services/sitecore-services";
 
 import "./styles.scss";
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
 
 const MembersListing = () => {
   let users = [];
@@ -43,18 +43,22 @@ const MembersListing = () => {
   const [adminCount, setAdminCount] = useState(0);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  async function fetchMembersInfo() {
+  async function fetchMembersInfo(cancelToken) {
     setIsLoading(true);
     const membersData = groupData.memberListPaging
       ? groupData.memberListPaging.data
       : [];
-    const response = await getUsers_service(membersData);
+    const response = await getUsers_service(membersData, cancelToken);
     setMembersInfo(response.data);
     setInitMemberList(response.data);
     setIsLoading(false);
   }
   useEffect(() => {
-    fetchMembersInfo();
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    fetchMembersInfo(source.token);
+
     if (groupData.memberListPaging) {
       setMemberCount(groupData.memberListPaging.data.length);
       let admins = groupData.memberListPaging.data.filter(
@@ -66,6 +70,10 @@ const MembersListing = () => {
       setIsAdmin(isAdminBool);
       setAdminCount(admins.length);
     }
+
+    return function () {
+      source.cancel();
+    };
   }, [groupData.memberListPaging]);
   const tabs = [
     { id: 1, text: "Members" },
@@ -235,7 +243,7 @@ const MembersListing = () => {
           ) : null}
         </HeaderBar>
       </div>
-      <PopUp
+      <modal
         header={"Add Member"}
         body={<SearchBar />}
         shown={showModal}
@@ -256,7 +264,7 @@ const MembersListing = () => {
           text={"Cancel"}
           onSubmitHandler={() => setShowModal(false)}
         />
-      </PopUp>
+      </modal>
       <div className="membersListing-filter-bar">
         <div className="membersListing-filter-bar__results d-none d-md-block">
           Showing
@@ -290,13 +298,13 @@ const MembersListing = () => {
         <div className="members-mobile d-md-none">
           <p>Members</p>
           {isAdmin ? (
-          <Icon
-            icon="add--circle"
-            disableFill="true"
-            color="#1d3a57"
-            size="20"
-            onClick={() => setShowModal(true)}
-          />
+            <Icon
+              icon="add--circle"
+              disableFill="true"
+              color="#1d3a57"
+              size="20"
+              onClick={() => setShowModal(true)}
+            />
           ) : null}
         </div>
         {selectedTab === 1 && !isLoading && membersInfo && returnMembers()}

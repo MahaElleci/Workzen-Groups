@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import Feed from "../../MainComponents/Feed/feed";
+import axios from "axios";
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
-import Icon from "../../SharedComponents/IcoMoon/IcoMoon";
-import { createGroup_service } from "../../Services/group-services";
-import InitialsPlaceholder from "../../SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
-import { fetchRecentPosts_service } from "../../Services/fetch-services";
 import { Link, useHistory } from "react-router-dom";
-import PopUp from "../../SharedComponents/Modal/Modal";
 import { toast } from "react-toastify";
 import { Form } from "react-bootstrap";
 
+import Feed from "../../components/MainComponents/Feed/feed";
+import Icon from "../../components/SharedComponents/IcoMoon/IcoMoon";
+import Button from "../../components/SharedComponents/Button/Button";
+import modal from "../../components/SharedComponents/Modal/Modal";
+import InitialsPlaceholder from "../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
+
+import { createGroup_service } from "../../Services/group-services";
+import { fetchRecentPosts_service } from "../../Services/fetch-services";
+
 import "./styles.scss";
-import Button from "../../SharedComponents/Button/Button";
 
 const GroupsActivityPage = () => {
   const dispatch = useDispatch();
@@ -37,9 +39,9 @@ const GroupsActivityPage = () => {
 
   const history = useHistory();
 
-  async function fetchRecentPosts() {
+  async function fetchRecentPosts(cancelToken) {
     setLoading(true);
-    const response = await fetchRecentPosts_service(pageNum, skip);
+    const response = await fetchRecentPosts_service(pageNum, skip, cancelToken);
     if (response) {
       dispatch({
         type: "FETCH_POSTS",
@@ -155,13 +157,20 @@ const GroupsActivityPage = () => {
     }
   }
   useEffect(() => {
-    fetchRecentPosts();
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    fetchRecentPosts(source.token);
+
+    return function () {
+      source.cancel();
+    };
   }, [pageNum]);
 
   return (
     <Container className="groups-activity-wrapper">
       {/*mobile tabs*/}
-      <PopUp
+      <modal
         header="Create Group"
         shown={showModal}
         onClose={() => setShowModal(false)}
@@ -181,7 +190,7 @@ const GroupsActivityPage = () => {
           size="medium"
           text={"Cancel"}
         />
-      </PopUp>
+      </modal>
       <Row className="groups-mobile w-100 d-md-none">
         <Col
           md={12}

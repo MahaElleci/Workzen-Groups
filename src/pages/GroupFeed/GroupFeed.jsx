@@ -1,88 +1,109 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-
+import axios from "axios";
 import { Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-import Spinner from "../../SharedComponents/Loader/Loader";
-import PopUp from "../../SharedComponents/Modal/Modal";
-import Button from "../../SharedComponents/Button/Button";
+import Spinner from "../../components/SharedComponents/Loader/Loader";
+import modal from "../../components/SharedComponents/Modal/Modal";
+import Button from "../../components/SharedComponents/Button/Button";
 import Media from "../../pages/GroupFeed/Media/Media";
 import Discussion from "../../pages/GroupFeed/Discussion/Discussion";
 import Members from "../../pages/GroupFeed/Members/Members";
 import Files from "../../pages/GroupFeed/Files/Files";
 import Coverphoto from "./CoverPhoto/CoverPhoto";
 import JoinRequests from "./JoinRequests/JoinRequests";
-import Dropdown from "../../SharedComponents/Dropdown/Dropdown";
+import Dropdown from "../../components/SharedComponents/Dropdown/Dropdown";
 import Settings from "./Settings/Settings";
+import HorizonalGroupTabs from "../../components/MainComponents/HorizontalGroupTabs/HorizontalGroupTabs";
 
 import {
   fetchGroupData_service,
   fetchGroupPosts_service,
 } from "../../Services/fetch-services";
-
 import { deleteGroup_service } from "../../Services/groupAdmin-services";
 
 import "./styles.scss";
-import HorizonalGroupTabs from "../../MainComponents/HorizontalGroupTabs/HorizontalGroupTabs";
 
 const GroupFeed = (props) => {
-  let isMemberBool;
-  let isPrivateBool;
-  let isAdminBool;
-  let adminList;
-  let id = props.match.params.id;
-  let url = props.match.url;
+  const id = props.match.params.id;
+  const url = props.match.url;
 
+  const postsData = useSelector((state) => state.postsData);
+  const loggedInUser = useSelector((state) => state.loggedInUser);
   const loggedInUserIsAdmin = useSelector((state) => state.loggedInUserIsAdmin);
-  const [isMember, setIsMember] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(loggedInUserIsAdmin);
-  const [isJoinRequested, setIsJoinRequested] = useState(null);
-  const [isPrivateFeed, setIsPrivateFeed] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-  const [groupId, setGroupId] = useState("");
-  const postsData = useSelector(state => state.postsData)
+
+  const [showmodal, setShowmodal] = useState(false);
+  const [initialState, setInitialState] = useState({
+    isMember: false,
+    isJoinRequested: false,
+    isLoggedInUserAdmin: loggedInUserIsAdmin,
+    isPrivateFeed: false,
+    groupId: "",
+    nextPage: null,
+    groupName: "",
+    pageNum: null,
+    isLoading: false,
+    showmodal: false,
+  });
+
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const loggedInUser = useSelector((state) => state.loggedInUser);
-  const [showPopup, setShowPopup] = useState(false);
-  const [isLoggedInUserAdmin, setIsLoggedInUserAdmin] = useState(false);
-  const [nextPage, setNextPage] = useState(1);
-  const [pageNum, setPageNum] = useState(1); 
-  const [groupName, setGroupName] = useState(""); 
-  function showConfirmation(show) {
-    setShowPopup(show);
-  }
-  function showGroupSettings() {
-    history.push(`/groups/${id}/settings`);
-  }
-  function showJoinRequests() {
-    history.push(`/groups/${id}/requests`);
-  }
-  const fetchGroupData = async () => {
-    setLoading(true);
-    const response = await fetchGroupData_service(id);
-    adminList = response.data.memberListPaging.data
-      ? response.data.memberListPaging.data.filter((member) => member.isAdmin === true)
+  const fetchGroupData = async (cancelToken) => {
+    setInitialState((prev) => ({
+      ...prev,
+      isLoading: true,
+    }));
+
+    const response = await fetchGroupData_service(id, cancelToken);
+
+    const adminList = response.data.memberListPaging.data
+      ? response.data.memberListPaging.data.filter(
+          (member) => member.isAdmin === true
+        )
       : [];
-    isMemberBool = response.data.memberListPaging.data.some(
+
+    const isMemberBool = response.data.memberListPaging.data.some(
       (member) => member.userId === loggedInUser.id
     );
-    isAdminBool = adminList.some((admin) => admin.userId === loggedInUser.id);
-    isPrivateBool = !isMemberBool && response.data.privacy === "Private";
+
+    const isAdminBool = adminList.some(
+      (admin) => admin.userId === loggedInUser.id
+    );
+
+    const isPrivateBool = !isMemberBool && response.data.privacy === "Private";
+
     const group_posts = response.data.postListPaging
       ? response.data.postListPaging
       : { data: [], paging: {} };
+
     group_posts.paging.nextPage
-      ? setNextPage(response.data.postListPaging.paging.nextPage)
-      : setNextPage(null);
-    setGroupId(response.data.id);
-    setIsMember(isMemberBool); 
-    setGroupName(response.data.name)
-    setIsJoinRequested(response.data.isJoinRequested);
-    setIsPrivateFeed(isPrivateBool);
+      ? setInitialState((prev) => ({
+          ...prev,
+          nextPage: response.data.postListPaging.paging.nextPage,
+        }))
+      : setInitialState((prev) => ({
+          ...prev,
+          nextPage: null,
+        }));
+
+    // Update our initial state
+    setInitialState(
+      (prev) => ({
+        ...prev,
+        groupId: response.data.id,
+        isMember: isMemberBool,
+        groupName: response.data.name,
+        isJoinRequested: response.data.isJoinRequested,
+        isPrivateFeed: isPrivateBool,
+        isLoggedInUserAdmin: response.data.isLoggedInUserAdmin,
+      }),
+      console.log("initialState: ", initialState)
+    );
+
+    // Dispatch values to the store
     dispatch({
       type: "FETCH_GROUPS_DATA",
       selectedGroupData: response.data,
@@ -92,36 +113,59 @@ const GroupFeed = (props) => {
       posts: group_posts.data,
       feed: "GroupFeed",
     });
-    setIsLoggedInUserAdmin(response.data.isLoggedInUserAdmin);
     dispatch({ type: "SET_IS_ADMIN", admin: isAdminBool });
-    setLoading(false);
+    //==========================================//
+
+    setInitialState((prev) => ({
+      ...prev,
+      isLoading: false,
+    }));
   };
 
   async function fetchGroupPosts() {
-    const response = await fetchGroupPosts_service(groupId, nextPage, postsData.length);
+    const response = await fetchGroupPosts_service(
+      initialState.groupId,
+      initialState.nextPage,
+      postsData.length
+    );
     response.data.paging.nextPage
-      ? setNextPage(response.data.paging.nextPage)
-      : setNextPage(null);
+      ? setInitialState((prev) => ({
+          ...prev,
+          nextPage: response.data.paging.nextPage,
+        }))
+      : setInitialState((prev) => ({
+          ...prev,
+          nextPage: null,
+        }));
     dispatch({
       type: "FETCH_POSTS",
       posts: response.data.data,
       feed: "GroupFeed",
     });
   }
-  useEffect(() => { 
-    if(loggedInUser.id){
-     fetchGroupData(); 
-    }
+
+  useEffect(() => {
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    fetchGroupData(source.token);
     window.scrollTo(0, 0);
+
+    return function () {
+      source.cancel();
+    };
   }, [loggedInUser]);
 
   function handleLoadMore() {
-    setPageNum(nextPage); 
+    setInitialState((prev) => ({
+      ...prev,
+      pageNum: initialState.nextPage,
+    }));
     fetchGroupPosts();
   }
 
   function deleteGroup() {
-    setShowPopup(false);
+    setShowmodal(false);
     const response = deleteGroup_service(id);
     response.then(() => {
       toast("Group deleted!", {
@@ -138,19 +182,19 @@ const GroupFeed = (props) => {
         id: 1,
         title: "Edit Group",
         icon: "edit-post",
-        onClick: () => showGroupSettings(),
+        onClick: () => history.push(`/groups/${id}/settings`),
       },
       {
         id: 2,
         title: "Delete Group",
         icon: "trash",
-        onClick: () => showConfirmation(true),
+        onClick: () => setShowmodal(true),
       },
       {
         id: 3,
         title: "Join Requests",
         icon: "users",
-        onClick: () => showJoinRequests(),
+        onClick: () => history.push(`/groups/${id}/requests`),
       },
     ];
     const groupOptionsMember = [
@@ -164,18 +208,24 @@ const GroupFeed = (props) => {
     return (
       <div className="group-options">
         <Dropdown
-          items={isLoggedInUserAdmin ? groupOptionsAdmin : groupOptionsMember}
+          items={
+            initialState.isLoggedInUserAdmin
+              ? groupOptionsAdmin
+              : groupOptionsMember
+          }
         />
       </div>
     );
   }
+
+  // JSX
   return (
     <>
-      <PopUp
+      <modal
         header="Confirm Delete Group"
         body="Are you sure you want to delete this group?"
-        onClose={() => showConfirmation(false)}
-        shown={showPopup}
+        onClose={() => setShowmodal(false)}
+        shown={showmodal}
         centered="true"
       >
         <Button
@@ -188,24 +238,24 @@ const GroupFeed = (props) => {
           className="primary-light"
           text={"Cancel"}
           size={"medium"}
-          onSubmitHandler={() => showConfirmation(false)}
+          onSubmitHandler={() => setShowmodal(false)}
         />
-      </PopUp>
+      </modal>
       <Row className="group-cover" noGutters="true">
         <Coverphoto
           image={
             "https://roundpeg.biz/wp-content/uploads/2015/01/MarketingIcons-Cover.jpg"
           }
-          isLoading={isLoading}
-          isMember={isMember}
-          isJoinRequested={isJoinRequested}
+          isLoading={initialState.isLoading}
+          isMember={initialState.isMember}
+          isJoinRequested={initialState.isJoinRequested}
         >
           {returnDropdown()}
-        </Coverphoto> 
-        <HorizonalGroupTabs groupId={id} groupName={groupName}/>
+        </Coverphoto>
+        <HorizonalGroupTabs groupId={id} groupName={initialState.groupName} />
       </Row>
       <div className="groups-tabs-wrapper">
-        {isLoading ? (
+        {initialState.isLoading ? (
           <div className="loader-placeholder">
             <Spinner />
           </div>
@@ -223,12 +273,13 @@ const GroupFeed = (props) => {
               path={`${url}/discussion`}
               render={(props) => (
                 <Discussion
-                  isPrivateFeed={isPrivateFeed}
+                  isPrivateFeed={initialState.isPrivateFeed}
                   {...props}
                   groupId={id}
+                  isLoading={initialState.isLoading}
                   handleLoadMore={handleLoadMore}
-                  nextPage={nextPage} 
-                  isMember={isMember}
+                  nextPage={initialState.nextPage}
+                  isMember={initialState.isMember}
                 />
               )}
             />
@@ -264,7 +315,7 @@ const GroupFeed = (props) => {
                 <JoinRequests
                   {...props}
                   groupId={id}
-                  isLoggedInUserAdmin={isLoggedInUserAdmin}
+                  isLoggedInUserAdmin={initialState.isLoggedInUserAdmin}
                 />
               )}
             />

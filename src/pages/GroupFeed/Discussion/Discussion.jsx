@@ -1,24 +1,30 @@
 import React, { useState } from "react";
-import "./styles.scss";
 import { Row, Col } from "react-bootstrap";
 
-import Feed from "../../../MainComponents/Feed/feed";
-import SideWidget from "../../../MainComponents/SideWidgets/SideWidgets";
-import Button from "../../../SharedComponents/Button/Button";
-import PopUp from "../../../SharedComponents/Modal/Modal";
+import Feed from "../../../components/MainComponents/Feed/feed";
+import SideWidget from "../../../components/MainComponents/SideWidgets/SideWidgets";
+import Button from "../../../components/SharedComponents/Button/Button";
+import modal from "../../../components/SharedComponents/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import EmptyState from "../../../SharedComponents/EmptyState/EmptyState";
-import SearchBar from "../../../SharedComponents/SearchBar/SearchBar";
+import EmptyState from "../../../components/SharedComponents/EmptyState/EmptyState";
+import SearchBar from "../../../components/SharedComponents/SearchBar/SearchBar";
 import { addMembers_service } from "../../../Services/group-services";
 import { toast } from "react-toastify";
 
-function Discussion({groupId, isPrivateFeed, handleLoadMore, nextPage, isMember}) {
+import "./styles.scss"; 
+
+function Discussion({
+  groupId,
+  isPrivateFeed,
+  handleLoadMore,
+  nextPage,
+  isMember,
+}) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.selectedGroupData);
   const isAdmin = useSelector((state) => state.loggedInUserIsAdmin);
   const selectedMembers = useSelector((state) => state.selectedMembers);
-  const [showAddMember, setShowAddMember] = useState(false); 
-
+  const [showAddMember, setShowAddMember] = useState(false);
 
   let id = groupId;
 
@@ -46,14 +52,20 @@ function Discussion({groupId, isPrivateFeed, handleLoadMore, nextPage, isMember}
         autoClose: false,
       });
     }
-  } 
+  }
   return (
     <div className="groups-discussion-wrapper">
       <Row className="layout-feeds container" noGutters="true">
         <Col md={12} lg={8}>
           <div className="layout-main-content">
             {!isPrivateFeed ? (
-              <Feed isGroup={true} isMember={isMember} groupId={id} loadMore={handleLoadMore} nextPage={nextPage ? true : false}  />
+              <Feed
+                isGroup={true}
+                isMember={isMember}
+                groupId={id}
+                loadMore={handleLoadMore}
+                nextPage={nextPage ? true : false}
+              />
             ) : (
               <EmptyState
                 icon={"exclamation"}
@@ -66,11 +78,13 @@ function Discussion({groupId, isPrivateFeed, handleLoadMore, nextPage, isMember}
         </Col>
         <Col md={4}>
           <div className="layout-right-content d-none d-lg-block">
-            {data.description && <SideWidget
-              data={data.description}
-              header="Group Description"
-              type="Text"
-            />}
+            {data.description && (
+              <SideWidget
+                data={data.description}
+                header="Group Description"
+                type="Text"
+              />
+            )}
             <SideWidget
               data={data.memberListPaging && data.memberListPaging.data}
               header="Members"
@@ -87,7 +101,7 @@ function Discussion({groupId, isPrivateFeed, handleLoadMore, nextPage, isMember}
                 </button>
               ) : null}
             </SideWidget>
-            <PopUp
+            <modal
               header={"Add Member"}
               body={<SearchBar />}
               shown={showAddMember}
@@ -108,7 +122,7 @@ function Discussion({groupId, isPrivateFeed, handleLoadMore, nextPage, isMember}
                 text={"Cancel"}
                 onSubmitHandler={() => handleAddMember(false)}
               />
-            </PopUp>
+            </modal>
           </div>
         </Col>
       </Row>

@@ -1,0 +1,19 @@
+@import '../../../CommonStyles/variables.scss';
+.emptyState_wrapper{ 
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    // margin: 1.5rem;
+    width: 100%; 
+    padding: 1rem; 
+    flex-direction: column;
+    p {
+     color: rgb(205, 205, 255); 
+     font-size: 1.3rem;
+     font-weight: 600; 
+     margin-bottom: 0; 
+     margin-left: 0.5rem; 
+     margin-top: 1rem; 
+     color: $gray-text;
+    }
+}

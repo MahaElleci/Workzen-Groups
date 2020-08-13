@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import GroupHeader from "./Header/Header";
 import GroupCard from "./GroupCard/GroupCard";
-import Button from "../../SharedComponents/Button/Button";
-import Spinner from "../../SharedComponents/Loader/Loader";
-
+import Button from "../../components/SharedComponents/Button/Button";
+import Spinner from "../../components/SharedComponents/Loader/Loader";
+import axios from "axios";
 import {
   fetchMyGroupData_service,
   fetchDiscoverGroupsData_service,
 } from "../../Services/fetch-services";
+
 import "./styles.scss";
 
 const GroupsListing = ({ type }) => {
@@ -24,9 +25,9 @@ const GroupsListing = ({ type }) => {
     return type === "MyGroups" ? "Groups I'm In" : "Discover Groups";
   }
 
-  async function fetchMyGroupsData() {
+  async function fetchMyGroupsData(cancelToken) {
     setLoading(true);
-    const response = await fetchMyGroupData_service(pageNum, skip);
+    const response = await fetchMyGroupData_service(pageNum, skip, cancelToken);
     if (response) {
       setMyGroupsData([...myGroupsData, ...response.data.data]);
       if (response.data.paging.nextPage) {
@@ -37,9 +38,13 @@ const GroupsListing = ({ type }) => {
     }
     setLoading(false);
   }
-  async function fetchDiscoverData() {
+  async function fetchDiscoverData(cancelToken) {
     setLoading(true);
-    const response = await fetchDiscoverGroupsData_service(pageNum, skip);
+    const response = await fetchDiscoverGroupsData_service(
+      pageNum,
+      skip,
+      cancelToken
+    );
     if (response) {
       setDiscoverData([...discoverGroupsData, ...response.data.data]);
       if (response.data.paging.nextPage) {
@@ -58,7 +63,12 @@ const GroupsListing = ({ type }) => {
   }
 
   useEffect(() => {
-    type === "MyGroups" ? fetchMyGroupsData() : fetchDiscoverData();
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    type === "MyGroups"
+      ? fetchMyGroupsData(source.token)
+      : fetchDiscoverData(source.token);
   }, [pageNum]);
   return (
     <div className="groupsListing-wrapper">

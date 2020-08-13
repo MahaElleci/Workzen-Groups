@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
-import PopUp from "../../../SharedComponents/Modal/Modal";
-import Button from "../../../SharedComponents/Button/Button";
+import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+import modal from "../../../components/SharedComponents/Modal/Modal";
+import Button from "../../../components/SharedComponents/Button/Button";
 
 import {
   joinPrivateGroup_service,
@@ -30,7 +30,7 @@ const Coverphoto = ({
 
   const iconState = groupData.isJoinRequested ? "down-arrow" : "plus";
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showmodal, setShowmodal] = useState(false);
   const [buttonText, setButtonText] = useState(null);
   const [buttonIcon, setButtonIcon] = useState(iconState);
   const [showActions, setShowActions] = useState(false);
@@ -96,7 +96,7 @@ const Coverphoto = ({
         }
       );
     } else {
-      setShowPopup(true);
+      setShowmodal(true);
     }
   }
 
@@ -104,7 +104,7 @@ const Coverphoto = ({
     const response = await leaveGroup_service(groupData.id);
     if (response) {
       setBtnInitialState();
-      setShowPopup(false);
+      setShowmodal(false);
       dispatch({
         type: "LEAVE_GROUP",
         groupid: groupData.id,
@@ -161,10 +161,10 @@ const Coverphoto = ({
 
   return (
     <>
-      <PopUp
+      <modal
         header="Leave group"
-        onClose={() => setShowPopup(false)}
-        shown={showPopup}
+        onClose={() => setShowmodal(false)}
+        shown={showmodal}
         centered="true"
         body={"Are you sure you want to leave this group?"}
       >
@@ -178,9 +178,9 @@ const Coverphoto = ({
           className="primary-light"
           text={"No"}
           size={"medium"}
-          onSubmitHandler={() => setShowPopup(false)}
+          onSubmitHandler={() => setShowmodal(false)}
         />
-      </PopUp>
+      </modal>
       <div className="photo" style={{ background: `url(${image})` }}>
         {children}
         <button

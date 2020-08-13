@@ -16,16 +16,17 @@ function usersMapper(data) {
   }
   return membersIds;
 }
-export const getUsers_service =  async function (body) {
+export const getUsers_service = async function (body, cancelToken) {
   let mappedData = body && usersMapper(body);
-  return await sitecoreRequester({
+  return sitecoreRequester({
     method: "post",
     url: `/users`,
     data: mappedData,
+    cancelToken: cancelToken,
   });
 };
-export const searchUsers_service = async function (keyword, body) {
-  return await sitecoreRequester({
+export const searchUsers_service = function (keyword, body) {
+  return sitecoreRequester({
     method: "get",
     url: `/users/${keyword}`,
     data: body,

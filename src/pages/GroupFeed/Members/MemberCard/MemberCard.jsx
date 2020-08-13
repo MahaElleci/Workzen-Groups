@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import "./styles.scss";
 
 const MemberCard = ({ userData, children, membersActions }) => {

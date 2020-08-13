@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import InitialsPlaceholder from "../../../SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
-import { Link } from "react-router-dom";
-
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+import InitialsPlaceholder from "../../../components/SharedComponents/InitialsPlaceholder/InitialsPlaceholder";
+import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
 
 import {
   joinPublicGroup_service,
@@ -13,6 +13,7 @@ import {
   leaveGroup_service,
   cancelRequest_service,
 } from "../../../Services/group-services";
+
 import { fetchGroupData_service } from "../../../Services/fetch-services";
 
 import "./styles.scss";
@@ -26,7 +27,7 @@ const GroupCard = ({ data, isMember }) => {
   const [buttonText, setButtonText] = useState(btnState);
   const [buttonIcon, setButtonIcon] = useState(iconState);
   const [showActions, setShowActions] = useState(false);
-  const [action, setAction] = useState(); 
+  const [action, setAction] = useState();
 
   const actions = {
     leave: {
@@ -45,19 +46,28 @@ const GroupCard = ({ data, isMember }) => {
       node.focus();
     }
   }, []);
-  async function getGroupData() { 
-    const response = await fetchGroupData_service(data.groupid);
+  async function getGroupData(cancelToken) {
+    const response = await fetchGroupData_service(data.groupid, cancelToken);
     if (response) {
       let adminListTemp = response.data.memberListPaging.data
-        ? response.data.memberListPaging.data.filter((member) => member.isAdmin === true)
+        ? response.data.memberListPaging.data.filter(
+            (member) => member.isAdmin === true
+          )
         : [];
       setAdminList(adminListTemp);
     }
   }
   useEffect(() => {
-    getGroupData();
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    getGroupData(source.token);
+
+    return function () {
+      source.cancel();
+    };
   }, []);
-  
+
   async function joinGroup() {
     if (buttonText === "Requested") {
       setAction(actions.cancel);
@@ -74,14 +84,14 @@ const GroupCard = ({ data, isMember }) => {
         if (data.privacy === "Private") {
           setButtonText("Requested");
         } else {
-          setButtonText("Joined"); 
+          setButtonText("Joined");
           toast("You're now a member of this group!", {
             position: toast.POSITION.BOTTOM_RIGHT,
-            className: "groups-toast"
+            className: "groups-toast",
           });
         }
         setButtonIcon("");
-      } 
+      }
     }
   }
   // Set the Btn initial state ( Join state)
@@ -108,9 +118,7 @@ const GroupCard = ({ data, isMember }) => {
 
   // Leave group
   async function leaveGroup() {
-    const response = await leaveGroup_service(
-      data.groupid
-    );
+    const response = await leaveGroup_service(data.groupid);
     if (response) {
       setBtnInitialState();
       dispatch({
@@ -122,9 +130,7 @@ const GroupCard = ({ data, isMember }) => {
 
   // Cancel request for joining private groups
   async function cancelRequest() {
-    const response = await cancelRequest_service(
-      data.groupid
-    );
+    const response = await cancelRequest_service(data.groupid);
     if (response) {
       setBtnInitialState();
     }

@@ -1,42 +1,46 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import HeaderBar from "../../../SharedComponents/HeaderBar/HeaderBar";
-import Button from "../../../SharedComponents/Button/Button";
+import axios from "axios";
+import HeaderBar from "../../../components/SharedComponents/HeaderBar/HeaderBar";
+import Button from "../../../components/SharedComponents/Button/Button";
 import UserCard from "../Members/MemberCard/MemberCard";
-import Spinner from "../../../SharedComponents/Loader/Loader";
+import Spinner from "../../../components/SharedComponents/Loader/Loader";
 import {
   approveRequests_service,
-  rejectRequests_service
+  rejectRequests_service,
 } from "../../../Services/groupAdmin-services";
+import { getUsers_service } from "../../../Services/sitecore-services";
 
-import {getUsers_service} from "../../../Services/sitecore-services"
 import "./styles.scss";
 
 const JoinRequests = ({ groupId }) => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const groupJoinRequests = useSelector(
     (state) => state.selectedGroupData.joinRequestList
-  ); 
-  const [requestsInfo, setRequestsInfo] = useState([])
-  async function fetchRequestsInfo() {
+  );
+  const [requestsInfo, setRequestsInfo] = useState([]);
+  async function fetchRequestsInfo(cancelToken) {
     setIsLoading(true);
-    const response = await getUsers_service(groupJoinRequests);
+    const response = await getUsers_service(groupJoinRequests, cancelToken);
     setRequestsInfo(response.data);
     setIsLoading(false);
   }
   useEffect(() => {
-    if(groupJoinRequests && groupJoinRequests.length > 0){
-      fetchRequestsInfo(); 
-    } 
-  }, [groupJoinRequests]); 
+    let cancelToken = axios.CancelToken;
+    let source = cancelToken.source();
+
+    if (groupJoinRequests && groupJoinRequests.length > 0) {
+      fetchRequestsInfo(source.token);
+    }
+
+    return function () {
+      source.cancel();
+    };
+  }, [groupJoinRequests]);
 
   async function approveRequests(requests) {
-    const response = await approveRequests_service(
-      groupId,
-      requests
-    );
+    const response = await approveRequests_service(groupId, requests);
     if (response) {
       dispatch({
         type: "FETCH_GROUPS_DATA",
@@ -46,10 +50,7 @@ const JoinRequests = ({ groupId }) => {
   }
 
   async function rejectRequests(requests) {
-    const response = await rejectRequests_service(
-      groupId,
-      requests
-    );
+    const response = await rejectRequests_service(groupId, requests);
     if (response) {
       dispatch({
         type: "FETCH_GROUPS_DATA",
@@ -86,8 +87,8 @@ const JoinRequests = ({ groupId }) => {
       <div className="joinRequests-wrapper">
         {groupJoinRequests && groupJoinRequests.length > 0 && (
           <p className="requests-number">{`You have ${groupJoinRequests.length} request`}</p>
-        )} 
-        {isLoading && <Spinner/>}
+        )}
+        {isLoading && <Spinner />}
         {groupJoinRequests && groupJoinRequests.length > 0 ? (
           requestsInfo.map((item) => {
             return (

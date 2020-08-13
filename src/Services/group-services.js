@@ -1,29 +1,29 @@
 import dataRequester from "../Requesters/dataRequester";
 
-export const createGroup_service = async function (groupObj) {
-  return await dataRequester({
+export const createGroup_service = function (groupObj) {
+  return dataRequester({
     method: "post",
     url: `/Groups`,
     data: groupObj,
   });
 };
 
-export const leaveGroup_service = async function (groupId) {
-  return await dataRequester({
+export const leaveGroup_service = function (groupId) {
+  return dataRequester({
     method: "put",
     url: `/groups/LeaveGroup/${groupId}`,
   });
 };
 
-export const joinPublicGroup_service = async function (groupId) {
-  return await dataRequester({
+export const joinPublicGroup_service = function (groupId) {
+  return dataRequester({
     method: "post",
     url: `/groups/JoinPublicGroup/${groupId}`,
   });
 };
 
-export const joinPrivateGroup_service = async function (groupId) {
-  return await dataRequester({
+export const joinPrivateGroup_service = function (groupId) {
+  return dataRequester({
     method: "post",
     url: `/groups/RequestToJoin/${groupId}`,
   });

@@ -1,3 +1,5 @@
+import React from "react";
+import GroupFeed from "../pages/GroupFeed/GroupFeed";
 import GroupsActivityPage from "../pages/RecentSocialFeed/GroupsActivityPage";
 import GroupsListing from "../pages/GroupsListing/GroupsListing";
 import MainLayout from "../Layouts/MainLayout";
@@ -5,8 +7,6 @@ import GroupLayout from "../Layouts/GroupLayout";
 import {
     Redirect
 } from "react-router-dom";
-import React from "react";
-import GroupFeed from "../pages/GroupFeed/GroupFeed";
 
 const routes = [
     {

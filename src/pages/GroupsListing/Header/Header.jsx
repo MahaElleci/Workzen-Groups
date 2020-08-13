@@ -1,7 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Icon from "../../../SharedComponents/IcoMoon/IcoMoon";
+import Icon from "../../../components/SharedComponents/IcoMoon/IcoMoon";
+
 import "./styles.scss";
+
 const Header = ({ header }) => {
   const history = useHistory();
   return (

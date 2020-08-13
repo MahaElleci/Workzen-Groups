@@ -1,7 +1,7 @@
 import React from 'react'
-import SideNavigation from '../MainComponents/SideNavigation/SideNavigation';
+import SideNavigation from '../components/MainComponents/SideNavigation/SideNavigation';
 import { Container } from 'react-bootstrap';
-import SideContentPlaceholder from '../MainComponents/SideContenPlaceholder/SideContentPlaceholder';
+import SideContentPlaceholder from '../components/MainComponents/SideContenPlaceholder/SideContentPlaceholder';
 
 
 export default function MainLayout({ children }) {

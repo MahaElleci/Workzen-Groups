@@ -1,6 +1,7 @@
 import React from 'react'
-import "./styles.scss";
-import HeaderBar from '../../../SharedComponents/HeaderBar/HeaderBar';
+import HeaderBar from '../../../components/SharedComponents/HeaderBar/HeaderBar';
+
+import "./styles.scss"; 
 
 function Files() {
     return (
